@@ -1,0 +1,50 @@
+<div class="di_login-prt bg-white">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="di_form-login">
+        <div class="login_logo"><span class="sr-only">Universal Adapter</span> </div>
+        <h1 class="font-orange text-center">Sign In</h1>
+        <p class="di_login-wlc text-center">Welcome to Universal Adapter platform</p>
+        <div class="di_form-group form-group have-icon have-float-error">
+            <label class="control-label sr-only">Email</label>
+            <span class="material-icons icon-lg">ic_person</span>
+            <input type="text" class="form-control form-control-lg rounded-0" formControlName="username" required placeholder="Username" onfocus="this.placeholder=''"
+            onblur="this.placeholder='Username'">
+        </div>
+        <div class="di_form-group form-group have-icon have-float-error">
+            <label class="control-label sr-only">Password</label>
+            <span class="material-icons icon-lg">ic_lock</span>
+            <input type="text" class="form-control form-control-lg rounded-0" formControlName="password" required placeholder="Password" onfocus="this.placeholder=''"
+            onblur="this.placeholder='Password'">
+        </div>        
+          <ngb-toast *ngIf="error"  [ngClass]="['bg-danger', 'text-light', 'toasts-icon']" class="ngb-toasts">
+             <i [ngClass]="'material-icons'">ic_error_outline</i>
+            <strong>Something wrong!.</strong> {{error}}
+          </ngb-toast>
+        <div class="di_form-group di_footer-act-login">
+            <button  mat-raised-button [disabled]="loading" color="warn" class="mat-full-width mat-button-lg">
+                <mat-icon *ngIf="loading">
+                    <mat-spinner [diameter]="23" class="spinner_loading mat-spinner-color"></mat-spinner>
+                </mat-icon>
+                Login
+            </button>
+        </div>
+    
+    </form>
+    <footer>
+      <div class="text-center mb-3">
+        <div ngbDropdown placement="top-right" class="d-inline-block">
+          <button class="btn btn-outline-secondary btn-sm rounded-0 other-arrow" ngbDropdownToggle><span class="text-muted">Language</span><span class="devider-vert"></span> <span class="text-truncated mr-2">English</span></button>
+          <div ngbDropdownMenu>
+            <button ngbDropdownItem>English</button>
+            <button ngbDropdownItem>Vietnamese</button>
+          </div>
+        </div>
+         
+      </div>
+        <p class="text-center">
+          Copyright © 2019
+          <a href="https://dicentral.com/" target="_blank"
+            ><!--<img src="https://www.polymer-project.org/images/logos/p-logo.svg">-->DiCentral</a
+          >. All rights reserved.
+        </p>
+      </footer>
+</div>

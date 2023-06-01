@@ -1,0 +1,7 @@
+.di__sidebar-menu{margin-top: 10px;}
+.di__sidebar-menu > li .material-icons{ position: absolute; top:13px; left:12px; width: 18px; height: 18px; font-size: 18px;}
+.di__sidebar-menu > li > a{ padding-left: 16px; text-decoration: none; font-size: 14px;}
+.di__sidebar-menu > li > a, .di__sidebar-menu > li .material-icons{ color:#BCC8D3}
+.di__sidebar-menu > li.list-group-item{ border:0}
+.di__sidebar-menu > li.active, .di__sidebar-menu > li:hover { background:#E1F1FF}
+.di__sidebar-menu > li.active > a, .di__sidebar-menu > li:hover > a{color: #003057;}

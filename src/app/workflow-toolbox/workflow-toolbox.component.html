@@ -1,0 +1,39 @@
+<!-- Normal Mode -->
+<div class="di-box_prt min-mdw-220">
+    <div class="di-box_header">
+        <ul class="nav nav-pills di-pills-tabs">
+            <li [ngClass]="{'active': group.active}" *ngFor="let group of groups">
+                <a (click)="groupChanged(group)" title="{{group.name}}"><i [ngClass]="group.iconVertTab"></i>
+                    <div class="text-truncate">{{group.name}}</div>
+                </a>
+            </li>
+        </ul>
+        <div class="input-group input-group-sm input-group-search">
+            <input type="text" class="form-control " placeholder="Search shape..." onfocus="this.placeholder=''"
+                onblur="this.placeholder='Search activity...'" [(ngModel)]="keyword">
+            <!-- <button type="submit"
+                class="menu-search-submit"><i class="fa fa-search"></i></button> -->
+        </div>
+    </div>
+    <div class="di-box_content tab-content pad0A">
+        <div class="tab-pane active di-list-group-toolbox connect-ico"
+            [ngClass]="{'show-tab':selectedGroupIndex  === 0, 'hide-tab':selectedGroupIndex !== 0}">
+            <div *ngFor="let nodeType of nodeTypes" class="window dropable">
+                <div class="di-list-group-toolbox-item">
+                    <div class="media-left"><img [src]="nodeType.imgUrl" width="18"></div>
+                    <div class="media-body">
+                        <h4 class="media-heading text-truncate">{{nodeType.label}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane active"
+            [ngClass]="{'show-tab':selectedGroupIndex === 1, 'hide-tab':selectedGroupIndex !== 1}">
+
+        </div>
+        <div class="tab-pane active"
+            [ngClass]="{'show-tab':selectedGroupIndex === 2, 'hide-tab':selectedGroupIndex !== 2}">
+
+        </div>
+    </div>
+</div>

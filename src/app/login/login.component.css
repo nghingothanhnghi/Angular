@@ -1,0 +1,10 @@
+.di_login-prt{display:flex;flex-direction:column;justify-content:center;height:100%}
+.di_form-login{min-width:412px;max-width:320px;margin:20px auto}
+.di_form-group{margin-bottom:30px}
+.di_footer-act-login{margin-top:72px}
+.spinner_loading{margin-right:7px}
+.mat-spinner-color::ng-deep circle{stroke:#FFF!important}
+.mat-full-width{width:100%;outline:none}
+h1{font-size:25px;font-weight:500;margin-bottom:43px}
+.di_login-wlc{font-size:18px;margin-bottom:30px}
+.login_logo{width:80px;height:80px;display:block; margin: 0 auto;background-image:url(/assets/imgs/UA_logo_color.svg);background-size:contain;background-repeat:no-repeat;background-position:center center}

@@ -1,0 +1,75 @@
+@font-face {
+  font-family: 'universal-adapter';
+  src:  url('fonts/universal-adapter.eot?4m1tum');
+  src:  url('fonts/universal-adapter.eot?4m1tum#iefix') format('embedded-opentype'),
+    url('fonts/universal-adapter.ttf?4m1tum') format('truetype'),
+    url('fonts/universal-adapter.woff?4m1tum') format('woff'),
+    url('fonts/universal-adapter.svg?4m1tum#universal-adapter') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'universal-adapter' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-cleanse:before {
+  content: "\e900";
+  color: #adbcc9;
+}
+.icon-data-processor:before {
+  content: "\e901";
+  color: #adbcc9;
+}
+.icon-disk:before {
+  content: "\e902";
+  color: #adbcc9;
+}
+.icon-end:before {
+  content: "\e903";
+  color: #adbcc9;
+}
+.icon-folder-open:before {
+  content: "\e904";
+  color: #adbcc9;
+}
+.icon-folder-open-2:before {
+  content: "\e905";
+  color: #adbcc9;
+}
+.icon-json-profile:before {
+  content: "\e906";
+  color: #adbcc9;
+}
+.icon-recipe:before {
+  content: "\e907";
+  color: #bcc8d3;
+}
+.icon-salesforce:before {
+  content: "\e908";
+  color: #adbcc9;
+}
+.icon-soap:before {
+  content: "\e909";
+  color: #bcc8d3;
+}
+.icon-start:before {
+  content: "\e90a";
+  color: #adbcc9;
+}
+.icon-xml-profile:before {
+  content: "\e90b";
+  color: #adbcc9;
+}

@@ -1,0 +1,20 @@
+<app-soap-service-configuration *ngIf="activityData.type === 'SOAP'"
+                                [data]="activityData"></app-soap-service-configuration>
+<app-disk-configuration *ngIf="activityData.type === 'Disk'"
+                        [data]="activityData"></app-disk-configuration>
+<app-http-client-configuration *ngIf="activityData.type === 'httpClient'"
+                               [data]="activityData"></app-http-client-configuration>
+<app-cleanse-configuration *ngIf="activityData.type === 'Cleanse'"
+                           [data]="activityData"></app-cleanse-configuration>
+<app-map-configuration *ngIf="activityData.type === 'Map'"
+                       [data]="activityData"></app-map-configuration>
+<app-notify-configuration *ngIf="activityData.type === 'Notify'"
+                          [data]="activityData"></app-notify-configuration>
+<app-start-configuration *ngIf="activityData.type === 'Start'"
+                         [data]="activityData"></app-start-configuration>
+<app-cip-configuration *ngIf="activityData.type === 'cip'"
+                       [data]="activityData"></app-cip-configuration>
+<app-end-configuration *ngIf="activityData.type === 'End'"
+                       [data]="activityData"></app-end-configuration>
+<app-data-processor-configuration *ngIf="activityData.type === 'DataProcessor'"
+                                  [data]="activityData"></app-data-processor-configuration>

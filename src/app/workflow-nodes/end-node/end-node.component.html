@@ -1,0 +1,33 @@
+<div [style.width]="obj.w + 'px'"
+     [style.height]="obj.h +'px'"
+     class="flowchart-object flowchart-output">
+     <div>
+          <div class="di_hover-btn-grp"
+               [class.d-none]="lockMode">
+               <button type="button"
+                       class="node-edit node-action btn btn-sm btn-light rounded-circle"
+                       (click)="editNode()">
+                    <i class="fa fa-pencil-square-o"></i>
+               </button>
+               <button type="button"
+                       class="node-delete node-action btn btn-sm btn-light rounded-circle"
+                       (click)="removeNode()">
+                    <i class="fa fa-times"></i>
+               </button>
+          </div>
+          <div [attr.width]="obj.w"
+               [attr.height]="obj.h">
+               <img [src]="obj.imgUrl"
+                    width="24">
+               <div text-anchor="middle"
+                    [attr.x]="obj.w / 2"
+                    [attr.y]="obj.h / 2"
+                    dominant-baseline="central">{{obj.text}}
+               </div>
+          </div>
+     </div>
+     <div class="wnode-spinner wnode-{{status}}"
+          [class.d-none]="!lockMode"></div>
+     <jtk-target port-type="end"
+                 endpoint="true"></jtk-target>
+</div>

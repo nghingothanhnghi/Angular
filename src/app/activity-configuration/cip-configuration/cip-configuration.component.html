@@ -1,0 +1,211 @@
+<form #cipForm="ngForm"
+      novalidate
+      class="di-box_prt bg-white min-mdw-550">
+    <div class="di-box_header no-shadow pad0A">
+        <div class="panel-heading pad10A">
+            <h4 class="panel-title">
+                <img class="icon-panel-title"
+                     src="assets/imgs/svg-component/cloud-interchange-platform.svg"
+                     width="18"> Cloud Interchange Platform
+            </h4>
+        </div>
+        <p class="text-note pad10L pad10R">
+            This shape uses to configure communication between Cloud Interchange Platform and Universal Adapter for
+            receiving and sending data.
+        </p>
+        <ul class="nav nav-tabs di__nav-tabs-styled-xs">
+            <li class="nav-item"
+                *ngFor="let configItem of configItems; let index = index"
+                role="presentation">
+                <a class="nav-link"
+                   (click)="activeConfigItemIndex = index"
+                   [class.active]="activeConfigItemIndex === index"
+                   role="tab"
+                   data-toggle="tab"
+                   href="javascript:void(0)">{{ configItem }}</a>
+            </li>
+        </ul>
+    </div>
+    <div class="di-box_content tab-content no-scrll-x">
+        <div [class.d-none]="activeConfigItemIndex !== 0"
+             role="tabpanel"
+             class="tab-pane active h-100 pt-3">
+            <!-- Display Name -->
+            <div class="form-group row">
+                <label class="col-md-3 col-form-label col-form-label-sm">Display Name</label>
+                <div class="col-md-9">
+                    <input type="text"
+                           name="displayedName"
+                           class="form-control form-control-sm"
+                           [(ngModel)]="dataProperty.displayedName">
+                </div>
+            </div>
+            <!-- Action -->
+            <div class="form-group row">
+                <label class="col-md-3 col-form-label col-form-label-sm text-truncate">Action</label>
+                <div class="col-md-9">
+                    <select name="action"
+                            class="custom-select custom-select-sm"
+                            [(ngModel)]="dataProperty.settings.action"
+                            #action="ngModel"
+                            (change)="onActionChanged(action.value)">
+                        <option value="get">GET</option>
+                        <option value="send">SEND</option>
+                    </select>
+                </div>
+            </div>
+            <!-- Caller ID -->
+            <div class="form-group row">
+                <label class="col-md-3 col-form-label col-form-label-sm">Caller ID <span
+                          class="text-danger">*</span></label>
+                <div class="col-md-9">
+                    <input name="callerId"
+                           type="text"
+                           class="form-control form-control-sm"
+                           [(ngModel)]="dataProperty.settings.uaDataUsage.callerId"
+                           #callerId="ngModel"
+                           [class.is-invalid]="callerId.invalid && callerId.touched"
+                           pattern="^\d+$"
+                           required>
+                    <div *ngIf="callerId.errors && callerId.invalid && callerId.touched">
+                        <small class="text-danger"
+                               *ngIf="callerId.errors.required">This field is required</small>
+                        <small class="text-danger"
+                               *ngIf="callerId.errors.pattern">Not a valid caller identity</small>
+                    </div>
+                </div>
+            </div>
+            <!-- From Customer And To Customer With 'get' action -->
+            <ng-container *ngIf="dataProperty.settings.action === 'get'">
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label col-form-label-sm">From Customer</label>
+                    <div class="col-md-9">
+                        <input name="fromCustomerId"
+                               type="text"
+                               class="form-control form-control-sm"
+                               [(ngModel)]="dataProperty.settings.uaDataUsage.fromCustomerId"
+                               #fromCustomerId="ngModel"
+                               [class.is-invalid]="fromCustomerId.invalid && fromCustomerId.touched"
+                               pattern="^[\d,]+$">
+                        <div *ngIf="fromCustomerId.errors && fromCustomerId.invalid && fromCustomerId.touched">
+                            <small class="text-danger"
+                                   *ngIf="fromCustomerId.errors.pattern">Not a valid customer identity</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label col-form-label-sm">To Customer <span
+                              class="text-danger">*</span></label>
+                    <div class="col-md-9">
+                        <input name="=toCustomerId"
+                               type="text"
+                               class="form-control form-control-sm"
+                               disabled
+                               [ngModel]="dataProperty.settings.uaDataUsage.toCustomerId"
+                               #toCustomerId="ngModel"
+                               [class.is-invalid]="toCustomerId.invalid && toCustomerId.touched"
+                               pattern="^\d+$"
+                               required>
+                        <div *ngIf="toCustomerId.errors && toCustomerId.invalid && toCustomerId.touched">
+                            <small class="text-danger"
+                                   *ngIf="toCustomerId.errors.required">This field is required</small>
+                            <small class="text-danger"
+                                   *ngIf="toCustomerId.errors.pattern">Not a valid customer identity</small>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+            <!-- From Customer And To Customer With 'send' action -->
+            <ng-container *ngIf="dataProperty.settings.action === 'send'">
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label col-form-label-sm">From Customer <span
+                              class="text-danger">*</span></label>
+                    <div class="col-md-9">
+                        <input name="fromCustomerId"
+                               type="text"
+                               disabled
+                               class="form-control form-control-sm"
+                               [ngModel]="dataProperty.settings.uaDataUsage.fromCustomerId"
+                               #fromCustomerId="ngModel"
+                               [class.is-invalid]="fromCustomerId.invalid && fromCustomerId.touched"
+                               pattern="^\d+$"
+                               required>
+                        <div *ngIf="fromCustomerId.errors && fromCustomerId.invalid && fromCustomerId.touched">
+                            <small class="text-danger"
+                                   *ngIf="fromCustomerId.errors.required">This field is required</small>
+                            <small class="text-danger"
+                                   *ngIf="fromCustomerId.errors.pattern">Not a valid customer identity</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label col-form-label-sm">To Customer</label>
+                    <div class="col-md-9">
+                        <input name="=toCustomerId"
+                               type="text"
+                               class="form-control form-control-sm"
+                               [(ngModel)]="dataProperty.settings.uaDataUsage.toCustomerId"
+                               #toCustomerId="ngModel"
+                               [class.is-invalid]="toCustomerId.invalid && toCustomerId.touched"
+                               pattern="^[\d,]+$">
+                        <div *ngIf="toCustomerId.errors && toCustomerId.invalid && toCustomerId.touched">
+                            <small class="text-danger"
+                                   *ngIf="toCustomerId.errors.pattern">Not a valid customer identity</small>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+            <!-- Transaction ID -->
+            <div class="form-group row">
+                <label class="col-md-3 col-form-label col-form-label-sm">Transaction ID <span
+                          class="text-danger">*</span></label>
+                <div class="col-md-9">
+                    <input name="transactionId"
+                           type="text"
+                           class="form-control form-control-sm"
+                           [(ngModel)]="dataProperty.settings.uaDataUsage.transactionId"
+                           #transactionId="ngModel"
+                           [class.is-invalid]="transactionId.invalid && transactionId.touched"
+                           pattern="^\w+$"
+                           required>
+                    <div *ngIf="transactionId.errors && transactionId.invalid && transactionId.touched">
+                        <small class="text-danger"
+                               *ngIf="transactionId.errors.required">This field is required</small>
+                        <small class="text-danger"
+                               *ngIf="transactionId.errors.pattern">Not a valid transaction identity</small>
+                    </div>
+                </div>
+            </div>
+            <!-- File Path -->
+            <div class="form-group row">
+                <label class="col-md-3 col-form-label col-form-label-sm">File Path <span
+                          class="text-danger">*</span></label>
+                <div class="col-md-9">
+                    <input name="filePath"
+                           type="text"
+                           class="form-control form-control-sm"
+                           [(ngModel)]="dataProperty.settings.uaDataUsage.filePath"
+                           #filePath="ngModel"
+                           [class.is-invalid]="filePath.invalid && filePath.touched"
+                           pattern="^[\w, ,\\,\/,:,\-,(,).]+$"
+                           required>
+                    <div *ngIf="filePath.errors && filePath.invalid && filePath.touched">
+                        <small class="text-danger"
+                               *ngIf="filePath.errors.required">This field is required</small>
+                        <small class="text-danger"
+                               *ngIf="filePath.errors.pattern">Not a valid file path</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="di-box_footer di__ui-layout-action">
+        <button class="btn btn-success width-xs-100 mr-2"
+                type="button"
+                [disabled]="cipForm.form.invalid"
+                (click)="save()">Save </button>
+        <button class="btn btn-light width-xs-100"
+                (click)="close()"
+                type="button">Cancel </button>
+    </div>
+</form>

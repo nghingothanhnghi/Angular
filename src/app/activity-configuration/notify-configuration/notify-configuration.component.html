@@ -1,0 +1,100 @@
+<form #notifyForm="ngForm"
+      novalidate
+      class="di-box_prt bg-white min-mdw-550">
+    <div class="di-box_header no-shadow pad0A">
+        <div class="panel-heading pad10A">
+            <h4 class="panel-title">
+                <img class="icon-panel-title"
+                     src="assets/imgs/svg-component/notification.svg"
+                     width="18"> Notification
+            </h4>
+        </div>
+        <p class="text-note pad10L pad10R">
+            The mail alert shape is to build customized notification messages and send to user account.
+        </p>
+        <ul class="nav nav-tabs di__nav-tabs-styled-xs">
+            <li class="nav-item"
+                *ngFor="let configItem of configItems; let index = index"
+                role="presentation">
+                <a class="nav-link"
+                   (click)="activeConfigItemIndex = index"
+                   [class.active]="activeConfigItemIndex === index"
+                   role="tab"
+                   data-toggle="tab"
+                   href="javascript:void(0)">{{ configItem }}</a>
+            </li>
+        </ul>
+    </div>
+    <div class="di-box_content tab-content no-scrll-x">
+        <div [class.d-none]="activeConfigItemIndex !== 0"
+             role="tabpanel"
+             class="tab-pane active h-100 pt-3">
+            <!-- Display Name -->
+            <div class="form-group row">
+                <label class="col-md-3 col-form-label col-form-label-sm">Display Name</label>
+                <div class="col-md-9">
+                    <input name="displayedName"
+                           type="text"
+                           class="form-control form-control-sm"
+                           [(ngModel)]="dataProperty.displayedName">
+                </div>
+            </div>
+            <!-- Title-->
+            <div class="form-group row">
+                <label class="col-md-3 col-form-label col-form-label-sm"> Title <span
+                          class="text-danger">*</span></label>
+                <div class="col-md-9">
+                    <input name="title"
+                           type="text"
+                           class="form-control form-control-sm"
+                           [(ngModel)]="dataProperty.title"
+                           #title="ngModel"
+                           [class.is-invalid]="title.invalid && title.touched"
+                           required>
+                    <div *ngIf="title.errors && title.invalid && title.touched">
+                        <small class="text-danger"
+                               *ngIf="title.errors.required">This field is required</small>
+                    </div>
+                </div>
+            </div>
+            <!-- Message Level -->
+            <div class="form-group row">
+                <label class="col-md-3 col-form-label col-form-label-sm">Message Level</label>
+                <div class="col-md-9">
+                    <select name="messageLevel"
+                            class="custom-select custom-select-sm"
+                            [(ngModel)]="dataProperty.messageLevel">
+                        <option value="Error">Error</option>
+                        <!-- <option value="Warning">Warning</option>
+                        <option value="Information">Information</option> -->
+                    </select>
+                </div>
+            </div>
+            <!-- Message-->
+            <div class="form-group row">
+                <label class="col-md-3 col-form-label col-form-label-sm">Message</label>
+                <div class="col-md-9">
+                    <textarea name="message"
+                              type="text"
+                              class="form-control form-control-sm"
+                              [(ngModel)]="dataProperty.message"
+                              rows="5"></textarea>
+                    <!-- <label class="style-cb mt-1">
+                        <input type="checkbox"
+                               [(ngModel)]="dataProperty.reportMailAlerts">
+                        <span></span> <i class="style-cb-text style-cb-text-sm"> Report Mail Alerts</i>
+                    </label> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="di-box_footer di__ui-layout-action">
+        <button class="btn btn-success width-xs-100 mr-2"
+                type="button"
+                [disabled]="notifyForm.form.invalid"
+                (click)="save()">Save </button>
+        <button class="btn btn-light width-xs-100"
+                (click)="close()"
+                type="button">Cancel </button>
+    </div>
+</form>

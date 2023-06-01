@@ -1,0 +1,67 @@
+
+/**/
+.di__nav-list-tree{ margin: 0;list-style: none; padding: 0 !important;}
+.di__nav-list-tree .dropdown-toggle::after{ display: none;}
+.di__nav-list-tree ul{position:relative; white-space: nowrap; }
+.di__nav-list-tree ul:before{content:"";display:block;width:0;position:absolute;top:0;bottom:0;left:0;border-left:1px solid #ddd}
+.di__nav-list-tree li{margin:0;padding:0 0 0 1em;line-height:2em;/*position:relative;*/font-size: 13px; width: 100%;}
+.di__nav-list-tree ul li:before{content:"";display:block;width:10px;height:0;border-top:1px solid #ddd;margin-top:-1px;position:absolute;top:1em;left:0}
+.di__nav-list-tree ul li:last-child:before{background:#fff;height:auto;top: 1.45em;bottom:0;}
+.di__nav-list-tree li a{padding:0 5px;font-size: 0.875rem; color: #777; white-space: nowrap; display: inline}
+.nav.di__nav-list-tree > li > a:focus, .nav.di__nav-list-tree > li > a:hover{text-decoration:none;background-color: transparent; }
+.di__nav-list-tree li .tree-toggler.nav-header, .di__nav-list-tree li .tree-toggler-header-map.nav-header{font-weight:400;cursor:pointer;font-size: 12px; margin-bottom:0}
+.di__nav-list-tree li .tree-toggler.nav-header.close-tree:before, .di__nav-list-tree li .tree-toggler-header-map.nav-header.close-tree:before{content:'\f07b'}
+.di__nav-list-tree li .tree-toggler.nav-header:before, .di__nav-list-tree li .tree-toggler-header-map.nav-header:before{font-family:'FontAwesome';content:' \f07c';margin-right:5px;float:left; color: #fcd430}
+/* no have border */
+.di__nav-list-tree.noBrd-tree ul:before{ border-left-color:transparent}
+/* treemenu have dropdown*/
+.di__nav-list-tree .dropdown-treemenu{ position: relative}
+.di__nav-list-tree .dropdown-treemenu > a{ padding-right: 0}
+.di__nav-list-tree .dropdown-treemenu .dropdown-arrow{ padding: 0; cursor:pointer}
+.di__nav-list-tree .dropdown-treemenu ul.dropdown-menu{ position: absolute; top:0; left:0}
+.di__nav-list-tree .dropdown-treemenu ul.dropdown-menu li{ padding: 0}
+.di__nav-list-tree .dropdown-treemenu ul.dropdown-menu li a{ display: block}.di__nav-list-tree
+.di__nav-list-tree .dropdown-treemenu ul::before{ border-left: 0}
+.di__nav-list-tree .dropdown-treemenu ul li::before{ border-top: 0}
+.di__nav-list-tree .dropdown-treemenu ul li:last-child::before{background-color: transparent;}
+.di__nav-list-tree .dropdown-treemenu i.fa-fw {width: 1.886em;}
+.di__nav-list-tree li .tree-toggler.nav-header:hover { color:blue}
+/* style when nav-header having dropdown*/
+.di__nav-list-tree .dropdown-treemenu.having-nav-header .dropdown-arrow {
+  position: absolute;
+  left: 30px;
+  top: 1px
+}
+.di__nav-list-tree.tree .dropdown-treemenu .dropdown-arrow{ position: relative; left:0}
+.di__nav-list-tree .dropdown-treemenu.having-nav-header .nav-header .text-nav-header{ padding-left: 15px}
+/**/
+/* dropdown with search*/
+.di__widget-dropdown-edit{position: absolute !important; top:0; right:20px; z-index: 40}
+.di__widget-dropdown-trash{position: absolute !important; top:0; right:50px; z-index: 40} /*191011*/
+.di__widget-dropdown {position: relative;}
+.di__widget-dropdown-header{ padding:0;}
+.di__widget-dropdown-header .input-group-search .menu-search-field{border-radius: 0;padding-left: 40px; padding-right: 30px;}
+.di__widget-dropdown .di__widget-dropdown-box{top:-162% !important;left: -1px;min-width:188px; max-width:188px; padding: 0 }
+.di__widget-dropdown-sub{padding: 5px 7px 5px;font-weight: normal;font-size: 12px; border-bottom: 1px solid #ddd;}
+.di__widget-dropdown .di__widget-dropdown-box .di__widget-title{ border-bottom:1px solid #ddd}
+.di__widget-scrollable-content{position:relative;width:100%;height:120px;overflow-x:hidden;max-height:120px;overflow-y:auto;background:#fff;background:linear-gradient(white 30%,rgba(255,255,255,0)),linear-gradient(rgba(255,255,255,0),#fff 70%) 0 100%,radial-gradient(farthest-side at 50% 0,rgba(0,0,0,.2),rgba(0,0,0,0)),radial-gradient(farthest-side at 50% 100%,rgba(0,0,0,.2),rgba(0,0,0,0)) 0 100%;background-repeat:no-repeat;background-color:#fff;background-size:100% 40px,100% 40px,100% 14px,100% 14px;background-attachment:local,local,scroll,scroll}
+.di__widget-scrollable-content-h320{position:relative;width:100%;height:320px;overflow-x:hidden;max-height:360px;overflow-y:auto;background:#fff;background:linear-gradient(white 30%,rgba(255,255,255,0)),linear-gradient(rgba(255,255,255,0),#fff 70%) 0 100%,radial-gradient(farthest-side at 50% 0,rgba(0,0,0,.2),rgba(0,0,0,0)),radial-gradient(farthest-side at 50% 100%,rgba(0,0,0,.2),rgba(0,0,0,0)) 0 100%;background-repeat:no-repeat;background-color:#fff;background-size:100% 40px,100% 40px,100% 14px,100% 14px;background-attachment:local,local,scroll,scroll}
+.di__widget-scrollable-content-h100a{position:relative;height:100%;width:100%;overflow-x:auto;overflow-y:auto;background:#fff;background:linear-gradient(white 30%,rgba(255,255,255,0)),linear-gradient(rgba(255,255,255,0),#fff 70%) 0 100%,radial-gradient(farthest-side at 50% 0,rgba(0,0,0,.2),rgba(0,0,0,0)),radial-gradient(farthest-side at 50% 100%,rgba(0,0,0,.2),rgba(0,0,0,0)) 0 100%;background-repeat:no-repeat;background-color:#fff;background-size:100% 40px,100% 40px,100% 14px,100% 14px;background-attachment:local,local,scroll,scroll}                     /*(191203)*/
+.di__widget-scrollable-content-h100b{position:relative;height:100%;width:100%;overflow-x:hidden;overflow-y:auto;background:#fff;background:linear-gradient(white 30%,rgba(255,255,255,0)),linear-gradient(rgba(255,255,255,0),#fff 70%) 0 100%,radial-gradient(farthest-side at 50% 0,rgba(0,0,0,.2),rgba(0,0,0,0)),radial-gradient(farthest-side at 50% 100%,rgba(0,0,0,.2),rgba(0,0,0,0)) 0 100%;background-repeat:no-repeat;background-color:#fff;background-size:100% 40px,100% 40px,100% 14px,100% 14px;background-attachment:local,local,scroll,scroll}
+.di__widget-scrollable-content-h100c{position:relative;height:100%;width:100%;overflow-x:hidden;overflow-y:auto;background:#fff;background:linear-gradient(white 30%,rgba(255,255,255,0)),linear-gradient(rgba(255,255,255,0),#fff 70%) 0 100%,radial-gradient(farthest-side at 50% 0,rgba(0,0,0,.2),rgba(0,0,0,0)),radial-gradient(farthest-side at 50% 100%,rgba(0,0,0,.2),rgba(0,0,0,0)) 0 100%;background-repeat:no-repeat;background-color:#fff;background-size:100% 40px,100% 40px,100% 14px,100% 14px;background-attachment:local,local,scroll,scroll}
+.di__widget-list{ margin: 0; padding: 0; list-style: none}
+.di__widget-list > li{ position: relative;border-top: 1px solid #ddd;}
+.di__widget-list > li > a{ padding: 5px 10px 5px 10px; display: block; text-decoration: none; font-size: 12px; color: #333;font-weight: normal;}
+.di__widget-list > li > a:hover{ background:#04a3e1; color: #fff}
+.di__widget-list > li:hover{ border-color:#04a3e1 }
+.di__widget-dropdown .di__widget-last-action{padding: 5px 10px 5px 10px }
+.di__widget-last-action{ padding: 10px; border-top:1px solid #ddd; font-size: 12px;}
+/* dropdown for form with button */
+.di__widget-dropdown.btn-block-dropdown .di__widget-dropdown-box{ width: 100%; min-width: 100%;}
+.btn-block-dropdown{ display: block}
+.btn-block-dropdown .btn{ text-align: left}
+.btn-block-dropdown .btn .di-iconicon__select{ font-size: 12px; position: absolute;right: 13px;top: 50%;margin-top: -5px;color: #444;}
+.dropdown-selected.dropdown-toggle:after{ display:none ;}
+/**/
+
+

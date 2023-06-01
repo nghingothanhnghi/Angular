@@ -1,0 +1,215 @@
+<!--200416.22-->
+<div class="di-box_prt bg-white">
+  <div class="di-box_header no-shadow pad0A">
+    <div class="panel-heading pad10A">
+      <h4 class="panel-title">
+        <img class="icon-panel-title"
+             src="assets/imgs/svg-component/database.svg"
+             width="18" /> Data Processor
+      </h4>
+    </div>
+    <p class="text-note pad10L pad10R">
+      Data Processor
+    </p>
+    <ul class="nav nav-tabs di__nav-tabs-styled-xs">
+      <li class="nav-item"
+          *ngFor="let configItem of configItems; let index = index"
+          role="presentation">
+        <a class="nav-link"
+           (click)="activeConfigItemIndex = index"
+           [class.active]="activeConfigItemIndex === index"
+           role="tab"
+           data-toggle="tab"
+           href="javascript:void(0)">{{ configItem }}</a>
+      </li>
+    </ul>
+  </div>
+  <div class="di-box_content tab-content no-scrll">
+    <div [class.d-none]="activeConfigItemIndex !== 0"
+         role="tabpanel"
+         class="tab-pane active h-100 pt-3">
+      <!-- Display Name -->
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label col-form-label-sm">Display Name</label>
+        <div class="col-md-9">
+          <input type="text"
+                 class="form-control form-control-sm"
+                 [(ngModel)]="dataProperty.displayedName" />
+        </div>
+      </div>
+      <!-- Step type -->
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label col-form-label-sm">Type</label>
+        <div class="col-md-9">
+          <select class="custom-select custom-select-sm" [(ngModel)]='step.type'>
+            <option [disabled]="!o.enabled" *ngFor="let o of dataProcessSteps" [ngValue]='o.type'>{{o.name}}</option>
+          </select>
+        </div>
+      </div>
+
+      <as-split direction="horizontal" usetransition="true" gutterSize="1">
+        <!-- LEFT panel: Steps Definition -->
+        <as-split-area size="40">
+          <div class="min-mdw-200 di-box_prt pad10R">
+            <div class="di-box_header no-shadow">
+              <div class="panel-heading mb-2">
+                <a class="panel-component-title cursor-pointer"><span>Steps Definition</span></a>
+              </div>
+              <!-- Button Header -->
+              <button type="button"
+                      class="btn btn-sm btn-light font-black mr-2"
+                      title="Add Step"
+                      (click)="addStep()">
+                <i class="fa fa-plus-circle fa-fw font-blue"></i> Add
+              </button>
+              <button type="button"
+                      class="btn btn-sm btn-link font-black mr-2"
+                      title="Delete Step"
+                      (click)="deleteStep()">
+                <i class="fa fa-trash fa-fw"></i> Delete
+              </button>
+              <button type="button"
+                      class="btn btn-xs btn-light rounded-circle mr-1"
+                      title="Move Down Step" disabled>
+                <i class="fa fa-angle-double-down"></i>
+              </button>
+              <button type="button"
+                      class="btn btn-xs btn-light rounded-circle mr-1"
+                      title="Move Up Step" disabled>
+                <i class="fa fa-angle-double-up"></i>
+              </button>
+            </div>
+            <div class="di-box_content pad0A di-box_content-mb70">
+              <!-- Steps definition -->
+              <div class="small" style="display:block;">
+                <table id="{{stepsId}}"
+                       class="table w-100 table-striped table-hover table-bordered dataTable"
+                       style="width:100%">
+                  <thead style='display:none;'>
+                  </thead>
+                </table>
+              </div>
+            </div>
+          </div>
+
+        </as-split-area>
+
+        <!-- Options -->
+        <as-split-area size="60" [hidden]="!stepNo">
+          <div class="min-mdw-200 di-box_prt pad10L" style="height:100%">
+            <div class="di-box_header no-shadow pad0A">
+              <div class="panel-heading mb-2 no-shadow">
+                <a class="panel-component-title cursor-pointer" href="#" (click)="collapses[0] = !collapses[0]; $event.preventDefault();"><span>Options</span></a>
+              </div>
+            </div>
+            <div class="di-box_content pad0A di-box_content-mb70">
+              <div [hidden]="collapses[0]" [hidden]="step.type !== 'split-data'">
+                <div class="form-group">
+                  <label class="col-form-label col-form-label-sm">Profile Type</label>
+                  <div class="">
+                    <select class="custom-select custom-select-sm" [(ngModel)]='step.profileType'>
+                      <option selected value="Xml">XML</option>
+                      <option disabled value="json">JSON</option>
+                    </select>
+                  </div>
+                </div>
+                <div>
+                  <div class="form-group">
+                    <label class="col-form-label col-form-label-sm">Profile Name</label>
+                    <!--Panel search-->
+                    <div class="">
+                      <div ngbDropdown #ngbDropdownSource="ngbDropdown" [autoClose]="true" class="di__widget-dropdown btn-block-dropdown mb-1">
+                        <button type="button" class="btn btn-sm btn-light dropdown-selected btn-block" ngbDropdownToggle>
+                          <!--XML profile Name: real-->
+                          <i class="fa fa-plus-circle fa-fw mr-1"></i> <span class="nowrap-truncate-text-w80p"> {{step.profileName}} </span> <span class="di-iconicon__select fa fa-sort"></span>
+                        </button>
+                        <div ngbDropdownMenu class="di__widget-dropdown-box">
+                          <div class="di__widget-dropdown-header">
+                            <div class="input-group-search input-group-sm no-group">
+                              <!--XML profile Name: search-->
+                              <input class="form-control menu-search-field" type="text" placeholder="Choose profile..."
+                                     onfocus="this.placeholder=''" onfocus="this.placeholder='Choose profile...'"
+                                     [(ngModel)]="sourceProfileName" />
+                              <button type="submit" class="menu-search-submit"><i class="fa fa-search"></i></button>
+                            </div>
+                          </div>
+                          <!--FancyTre Source Profile Name-->
+                          <div class="di__widget-scrollable-content" (click)="ngbDropdownSource.close()">
+                            <app-fancy-tree (selectedNode)='onSelectSourceNode($event)'
+                                            [source]='sourceProfileNameTreeData'
+                                            [filter]="sourceProfileName"
+                                            [notifyFilter]="notifyFilterSourceProfileName">
+                            </app-fancy-tree>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-form-label col-form-label-sm">Split to</label>
+                    <!-- step.splitTo -->
+                    <div class="" [ngClass]="{ 'has-error': stepSplitTo.errors?.pattern }">
+                      <input type="text"
+                             class="form-control form-control-sm"
+                             title='Input number of records need to split per one document'
+                             name="stepSplitTo"
+                             #stepSplitTo="ngModel"
+                             [(ngModel)]="splitTo"
+                             [pattern]="decimalsPattern" />
+                      <p *ngIf="stepSplitTo.errors?.pattern" class="help-block">
+                        Invalid number
+                      </p>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-form-label col-form-label-sm">Split by Element</label>
+                    <div class="">
+                      <div ngbDropdown #ngbDropdownSourceData="ngbDropdown" [autoClose]="true" class="di__widget-dropdown btn-block-dropdown mb-1">
+                        <button type="button" class="btn btn-sm btn-light dropdown-selected btn-block" title="{{step.splitByElement}}" ngbDropdownToggle>
+                          <!--XML profile Name: real-->
+                          <i class="fa fa-plus-circle fa-fw mr-1"></i> <span class="nowrap-truncate-text-w80p"> {{step.splitByElement}} </span> <span class="di-iconicon__select fa fa-sort"></span>
+                        </button>
+                        <div ngbDropdownMenu class="di__widget-dropdown-box">
+                          <div class="di__widget-dropdown-header">
+                            <div class="input-group-search input-group-sm no-group">
+                              <!--XML profile Name: search-->
+                              <input class="form-control menu-search-field" type="text" placeholder="Choose element..."
+                                     onfocus="this.placeholder=''" onblur="this.placeholder='Choose element...'"
+                                     [(ngModel)]="splitByElement" />
+                              <button type="submit" class="menu-search-submit"><i class="fa fa-search"></i></button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!--FancyTre Source Profile-->
+                    <div class="">
+                      <app-fancy-tree (selectedNode)='onSelectProfileNode($event)'
+                                      [source]='step.profileData.profile'
+                                      [filterOption]='filterOption'
+                                      [filter]="splitByElement">
+                      </app-fancy-tree>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>         
+          </div>
+        </as-split-area>
+      </as-split>
+    </div>
+  </div>
+  <div class="di-box_footer di__ui-layout-action">
+    <button class="btn btn-success width-xs-100 mr-2"
+            type="button"
+            [disabled] = "stepSplitTo.errors"
+            (click)="save()">
+      Save
+    </button>
+    <button class="btn btn-light width-xs-100"
+            (click)="close()"
+            type="button">
+      Cancel
+    </button>
+  </div>
+</div>

@@ -1,0 +1,63 @@
+<form [formGroup]="mapParameterForm"
+      (ngSubmit)="ok()">
+    <div class="modal-header">
+        <h4 class="modal-title">Tracked Field</h4>
+    </div>
+    <div class="modal-body">
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label col-form-label-sm">Name <span class="text-danger">*</span></label>
+                <div class="col-md-10">
+                    <input type="text"
+                           class="form-control form-control-sm"
+                           placeholder="Enter name"
+                           formControlName="name"
+                           [class.is-invalid]="nameCtrl.invalid && nameCtrl.touched">
+                    <div *ngIf="nameCtrl.invalid && nameCtrl.touched">
+                        <small class="text-danger"
+                               *ngIf="nameCtrl.errors?.required">Required</small>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label col-form-label-sm">Type<span class="text-danger">*</span></label>
+                <div class="col-md-10">
+                    <select class="custom-select custom-select-sm"
+                            formControlName="type"
+                            [class.is-invalid]="typeCtrl.invalid && typeCtrl.touched">
+                        <option *ngFor="let type of types"
+                                value="{{type.value}}">{{type.name}}</option>
+                    </select>
+                    <small class="text-danger"
+                           [class.d-none]="typeCtrl.valid || typeCtrl.untouched">Required</small>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label col-form-label-sm">Note</label>
+                <div class="col-md-10">
+                    <input type="text"
+                           class="form-control"
+                           placeholder="Enter note"
+                           formControlName="note">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label col-form-label-sm"></label>
+                <div class="col-md-10">
+                    <label class="style-cb">
+                        <input type="checkbox"
+                               formControlName="active">
+                        <span></span>
+                        <i class="style-cb-text style-cb-text-sm"> Active</i>
+                    </label>
+                </div>
+            </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-success width-xs-100 mr-2"
+                type="submit"
+                [disabled]="!mapParameterForm.valid">OK</button>
+        <button class="btn btn-light width-xs-100"
+                (click)="cancel()"
+                type="button">Cancel</button>
+    </div>
+</form>

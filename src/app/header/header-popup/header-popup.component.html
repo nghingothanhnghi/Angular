@@ -1,0 +1,22 @@
+<div class="nav-item dropdown" ngbDropdown display="dynamic">
+    <a class="nav-link font-black d-none d-sm-none d-md-inline-block" href="javascript:void(0)" ngbDropdownToggle
+      ><img class="rounded-circle mr-1" src="/assets/imgs/user-avata.svg" width="27" /></a
+    >
+    <div ngbDropdownMenu class="box-sm d-xs-dropdown-block">
+      <ng-container>
+        <div class="di_acc-box">
+          <div class="di_acc-box-avata"><img class="rounded-circle" src="/assets/imgs/user-avata.svg" width="52" /></div>
+          <div class="di_acc-box-content">
+            <h6 class="di_acc-title">Ngo Thanh Nghi</h6>
+          </div>
+        </div>
+        <a ngbDropdownItem routerLinkActive="active" [routerLink]="['/change-password']" [routerLinkActiveOptions]="{ exact: true }"  (click)="navItemActiveChange('/')">
+       Change Password
+        </a>
+      </ng-container>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" (click)="logout()" href="javascript:void(0)"><span class="fa fa-sign-out fa-fw icon-xs-big"></span> Log Out</a
+      >
+    </div>
+  </div>
+  

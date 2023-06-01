@@ -1,0 +1,75 @@
+<!--(200427.0511)-->
+<form name="elementRulesForm" role="form" novalidate>
+    <!-- Collapse 1. Field length validation of string: Required minimun length -->
+    <div class="panel-heading-extend" [hidden] ='!branch || branch.valueType !=="s" || !branch.fieldLengthValidation'>
+        <a class="panel-component-title cursor-pointer" href="#" (click)="collapses[0] = !collapses[0]; $event.preventDefault();">
+        <span class="small">This element has a required minimun length</span>
+        </a>
+    </div>
+    <!-- rule.minLengOps -->
+    <div [hidden]='collapses[0]' *ngIf = 'branch && branch.valueType ==="s" && branch.fieldLengthValidation && rule && rule.minLengOps'>                                        
+        <div class="form-group row">
+            <label class="col-md-4 col-form-label col-form-label-sm">If too short</label>
+            <div class="col-md-8">
+                <select name="rule.minLengOps.ifTooShortAct" class="custom-select custom-select-sm small" [(ngModel)]="rule.minLengOps.ifTooShortAct" required>
+                    <option [disabled]="!o.enabled" *ngFor="let o of tooShortCleanRules" [ngValue]='o.value'>{{o.name}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row" [hidden]="!rule || rule.minLengOps.ifTooShortAct==='reje'">
+            <label class="col-sm-4 control-label">Pad character</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control small"  name="rule.minLengOps.padCharacter" 
+                    [(ngModel)]='rule.minLengOps.padCharacter' required />
+                    <div ng-class="{'has-error': invalidateRequired('rule.minLengOps.padCharacter')}">
+                        <span *ngIf="invalidateRequired('rule.minLengOps.padCharacter')" class="help-block">Required</span>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Collapse 2.Field length validation of string: Required maximum length -->
+    <div class="panel-heading-extend" [hidden]='!branch || branch.valueType !=="s" || !branch.fieldLengthValidation'>
+        <a class="panel-component-title cursor-pointer" href="#" (click)="collapses[1] = !collapses[1]; $event.preventDefault();">
+            <span class="small">This element has a required maximum length</span>
+        </a>    
+    </div>
+    <!-- rule.maxLengOps -->
+    <div [hidden]='collapses[1]' *ngIf='branch && branch.valueType ==="s" && branch.fieldLengthValidation && rule && rule.maxLengOps'>                                        
+        <div class="form-group row">
+            <label class="col-md-4 col-form-label col-form-label-sm">If too long</label>
+            <div class="col-md-8">
+                <select name="rule.maxLengOps.ifTooLongAct" class="custom-select custom-select-sm small" [(ngModel)]="rule.maxLengOps.ifTooLongAct" required>
+                    <option [disabled]="!o.enabled" *ngFor="let o of tooLongCleanRules" [ngValue]='o.value'>{{o.name}}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- Collapse 3. This element, if filled, must contain number or date -->
+    <div class="panel-heading-extend" [hidden]="!branch || branch.valueType !=='s' || branch.dataType === 'c'">
+        <a class="panel-component-title cursor-pointer" href="#" (click)="collapses[2] = !collapses[2]; $event.preventDefault();">
+        <span class="small">This element, if filled, must contain {{branch.dataType === 'n' ? 'numeric':'date'}} data</span>
+        </a>
+    </div>
+    <div [hidden]="collapses[2]" *ngIf = 'branch && branch.valueType ==="s" && branch.dataType !== "c" && rule && rule.numericDataOps'>
+        <div class="form-group row">
+            <label class="col-md-4 col-form-label col-form-label-sm">{{branch.dataType === 'n' ? 'If non-numeric':'If not a date'}}</label>
+            <div class="col-md-8">
+                <select name="rule.numericDataOps.ifNonNumericAct" class="custom-select custom-select-sm small" [(ngModel)]="rule.numericDataOps.ifNonNumericAct" required>
+                    <option [disabled]="!o.enabled" *ngFor="let o of defaultValueCleanRules" [ngValue]='o.value'>{{o.name}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row" [hidden]="!rule || rule.numericDataOps.ifNonNumericAct==='reje'">
+            <label class="col-sm-4 col-form-label col-form-label-sm">Default value</label>
+            <div class="col-sm-8">
+                <input class="form-control small" type="text" name="rule.numericDataOps.defaultToValue" 
+                    [(ngModel)]='rule.numericDataOps.defaultToValue' required />
+                    <div ng-class="{'has-error': invalidateRequired('rule.numericDataOps.defaultToValue')}">
+                        <span *ngIf="invalidateRequired('rule.numericDataOps.defaultToValue')" class="help-block">Required</span>
+                    </div>
+            </div>
+        </div>
+    </div>
+</form>

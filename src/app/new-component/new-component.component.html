@@ -1,0 +1,68 @@
+<form [formGroup]="newComponentForm"
+      (ngSubmit)="create()">
+    <div class="modal-header">
+        <h4 class="modal-title">Create Activity</h4>
+    </div>
+    <div class="modal-body">
+            <div class="form-group">
+                <label class="col-form-label col-form-label-sm">Type <span class="text-danger">*</span></label>
+                <select class="custom-select custom-select-sm"
+                formControlName="componentType"
+                [class.is-invalid]="componentType.invalid && componentType.touched">
+            <option [ngValue]="null"
+                    disabled
+                    selected>Choose a type of activity you want</option>
+            <optgroup *ngFor='let componentTypeGroup of componentTypeGroups'
+                      label="{{componentTypeGroup.name}}">
+                <option *ngFor='let componentType of componentTypeGroup.items'
+                        [ngValue]="componentType">
+                    {{componentType.name}}</option>
+            </optgroup>
+        </select>
+        <small class="text-danger"
+               [class.d-none]="componentType.valid || componentType.untouched">Required</small>
+            </div>
+            <div class="form-group">
+                <label class="col-form-label col-form-label-sm">Name <span class="text-danger">*</span></label>
+                <input type="text"
+                class="form-control form-control-sm"
+                placeholder="Enter activity name"
+                formControlName="componentName"
+                [class.is-invalid]="componentName.invalid && componentName.touched">
+         <div *ngIf="componentName.invalid && componentName.touched">
+             <small class="text-danger"
+                    *ngIf="componentName.errors?.required">Required</small>
+             <small class="text-danger"
+                    *ngIf="componentName.errors?.maxlength">Max length</small>
+         </div>
+            </div>
+            <div
+                 *ngIf="newComponentForm.value.componentType != null && newComponentForm.value.componentType.type === 'Map'">
+                <div class="form-group">
+                    <label class="col-form-label col-form-label-sm"></label>
+                    <label class="style-cb">
+                        <input type="checkbox"
+                               formControlName="useDiUniteMap" />
+                        <span></span>
+                        <i class="style-cb-text style-cb-text-sm"> Use DiUnite Map</i>
+                    </label>
+
+                </div>
+                <div class="form-group">
+                    <label class="col-form-label col-form-label-sm">Map ID</label>
+                    <input type="text"
+                    class="form-control form-control-sm"
+                    formControlName="mapId">
+             <span class="help-block"><small></small></span>
+                </div>
+            </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-warning width-xs-100 mr-2"
+                type="submit"
+                [disabled]="!newComponentForm.valid">Create</button>
+        <button class="btn btn-light width-xs-100"
+                (click)="cancel()"
+                type="button">Cancel</button>
+    </div>
+</form>

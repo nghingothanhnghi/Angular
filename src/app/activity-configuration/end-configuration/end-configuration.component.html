@@ -1,0 +1,62 @@
+<div class="di-box_prt bg-white min-mdw-550">
+    <div class="di-box_header no-shadow pad0A">
+        <div class="panel-heading pad10A">
+            <h4 class="panel-title">
+                <img class="icon-panel-title"
+                     src="assets/imgs/svg-component/flag-end-point.svg"
+                     width="18"> End
+            </h4>
+        </div>
+        <p class="text-note pad10L pad10R">
+            The End Shape is the main shape that ends the Universal Adapter recipe flow. It is automatically added to
+            each new recipe and it cannot be removed.
+        </p>
+        <ul class="nav nav-tabs di__nav-tabs-styled-xs">
+            <li class="nav-item"
+                *ngFor="let configItem of configItems; let index = index"
+                role="presentation">
+                <a class="nav-link"
+                   (click)="activeConfigItemIndex = index"
+                   [class.active]="activeConfigItemIndex === index"
+                   role="tab"
+                   data-toggle="tab"
+                   href="javascript:void(0)">{{ configItem }}</a>
+            </li>
+        </ul>
+    </div>
+    <div class="di-box_content tab-content no-scrll-x">
+        <div [class.d-none]="activeConfigItemIndex !== 0"
+             role="tabpanel"
+             class="tab-pane active h-100 pt-3">
+            <!-- Display Name -->
+            <div class="form-group row">
+                <label class="col-md-3 col-form-label col-form-label-sm">Display Name</label>
+                <div class="col-md-9">
+                    <input type="text"
+                           class="form-control form-control-sm"
+                           [(ngModel)]="dataProperty.displayedName">
+                </div>
+            </div>
+            <!-- Ending Type -->
+            <div class="form-group row">
+                <label class="col-md-3 col-form-label col-form-label-sm">Ending Type</label>
+                <div class="col-md-9">
+                    <select class="custom-select custom-select-sm"
+                            [ngModel]="dataProperty.endingType"
+                            disabled>
+                        <option value="none">None</option>
+                        <option value="cip_notify">Cloud Interchange Platform</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="di-box_footer di__ui-layout-action">
+        <button class="btn btn-success width-xs-100 mr-2"
+                type="button"
+                (click)="save()">Save </button>
+        <button class="btn btn-light width-xs-100"
+                (click)="close()"
+                type="button">Cancel </button>
+    </div>
+</div>

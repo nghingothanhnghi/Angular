@@ -1,0 +1,24 @@
+.ua_nav-header{
+    position: fixed;
+    left:0;
+    top:0;
+    bottom: auto;
+    background-color: rgba(0, 48, 87, 1);
+    height: 100%;
+    width: 52px;
+    /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);*/
+}
+.ua_nav-layout{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-self: center;
+}
+.ua_nav-layout-header,.ua_nav-layout-footer{
+    flex-shrink: 0;
+    flex-grow: 0;
+}
+.ua_nav-layout-content{
+    flex: 1;
+}
+.navbar-brand{ width: 52px; height: 52px;background-color: #fff; background-image: url(/assets/imgs/UA_logo_color.svg); background-repeat: no-repeat; background-position: center center; background-size: auto; margin-right: 0;text-indent: -9999px;}

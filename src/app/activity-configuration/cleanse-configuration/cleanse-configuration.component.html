@@ -1,0 +1,170 @@
+<!--200506-->
+<form #cleanseForm="ngForm"
+      novalidate
+      class="di-box_prt bg-white min-mdw-550">
+    <div class="di-box_header no-shadow pad0A">
+        <div class="panel-heading pad10A">
+            <h4 class="panel-title">
+                <img class="icon-panel-title"
+                     src="assets/imgs/svg-component/cleanse.svg"
+                     width="18" /> Cleanse
+            </h4>
+        </div>
+        <p class="text-note pad10L pad10R">
+            The Cleanse shape enables you to validate document field values and either repair or reject the document
+            before
+            further processing. It is often helpful to use a Cleanse shape before a Map shape, so that invalid values
+            can be
+            corrected before potentially causing errors while mapping.
+        </p>
+        <ul class="nav nav-tabs di__nav-tabs-styled-xs">
+            <li class="nav-item"
+                *ngFor="let configItem of configItems; let index = index"
+                role="presentation">
+                <a class="nav-link"
+                   (click)="activeConfigItemIndex = index"
+                   [class.active]="activeConfigItemIndex === index"
+                   role="tab"
+                   data-toggle="tab"
+                   href="javascript:void(0)">{{ configItem }}</a>
+            </li>
+        </ul>
+    </div>
+    <div class="di-box_content tab-content no-scrll-x">
+        <div [class.d-none]="activeConfigItemIndex !== 0"
+             role="tabpanel"
+             class="tab-pane active h-100 pt-3">
+            <!-- Display Name -->
+            <div class="form-group row">
+                <label class="col-md-3 col-form-label col-form-label-sm">Display Name</label>
+                <div class="col-md-9">
+                    <input type="text"
+                           name="displayedName"
+                           class="form-control form-control-sm"
+                           [(ngModel)]="dataProperty.displayedName" />
+                </div>
+            </div>
+            <!-- Profile Type -->
+            <div class="form-group row">
+                <label class="col-md-3 col-form-label col-form-label-sm">Profile Type</label>
+                <div class="col-md-9">
+                    <select name="profileType"
+                            class="custom-select custom-select-sm"
+                            [(ngModel)]="dataProperty.settings.cleanseType"
+                            #profileType="ngModel"
+                            (change)="onProfileTypeChanged(profileType.value)">
+                        <!-- <option value="DiClientAdapter.Command.CLEANSE.db">Database</option>
+                        <option value="DiClientAdapter.Command.CLEANSE.edi">EDI</option>
+                        <option value="DiClientAdapter.Command.CLEANSE.flatfile">Flat File</option>
+                        <option value="DiClientAdapter.Command.CLEANSE.XmlCleanse">Xml</option>
+                        <option value="DiClientAdapter.Command.CLEANSE.json">Json</option>-->
+                        <option [disabled]="!o.enabled" *ngFor="let o of cleanseTypes" [ngValue]='o.value'>{{o.name}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Cleanse Data Using -->
+            <div class="form-group row" [hidden]='dataProperty.settings.cleanseType!=="DiClientAdapter.Command.CLEANSE.XmlCleanse"'>
+                <label class="col-md-3 col-form-label col-form-label-sm">Cleanse Data Using</label>
+                <div class="col-md-9" >
+                    <ng-select
+                               [items]="profiles"
+                               bindLabel="name"
+                               bindValue="id"
+                               name="profileId"
+                               #profileId="ngModel"
+                               (change)="onProfileChanged(profileId.value)"
+                               [(ngModel)]="dataProperty.settings.cleanseDataUsing.id"
+                               class="ng-select-sm">
+                        <ng-template ng-label-tmp
+                                     let-item="item">
+                            <button class="btn btn-light btn-sm position-relative z-index-1"
+                                    (click)="openCloneComponent(dataProperty.settings.cleanseDataUsing)">
+                                <i class="fa fa-pencil-square-o"
+                                   aria-hidden="true"></i>
+                            </button>
+                            {{ item.name }}
+                        </ng-template>
+                    </ng-select>
+                </div>
+            </div>
+            <div class="form-group row" [hidden]='dataProperty.settings.cleanseType==="DiClientAdapter.Command.CLEANSE.XmlCleanse"'>
+                <label class="col-md-3 col-form-label col-form-label-sm">Cleanse Data Using</label>
+                  <!--Panel search-->
+                  <div class="col-md-9">
+                    <div ngbDropdown #ngbDropdownSource="ngbDropdown" [autoClose]="true" class="di__widget-dropdown btn-block-dropdown mb-1">
+                        <button type="button" class="btn btn-sm btn-light dropdown-selected btn-block" ngbDropdownToggle>
+                            <!--XML profile Name: real-->
+                            <i class="fa fa-plus-circle fa-fw mr-1"></i> <span class="nowrap-truncate-text-w80p"> {{dataProperty.settings.cleanseDataUsing.name}} </span> <span class="di-iconicon__select fa fa-sort"></span>
+                        </button>
+                        <div ngbDropdownMenu class="di__widget-dropdown-box">
+                            <div class="di__widget-dropdown-header">
+                                <div class="input-group-search input-group-sm no-group">
+                                    <!--XML profile Name: search-->
+                                    <input  class="form-control menu-search-field" type="text" [placeholder]="placeholder"
+                                            (focus)="this.placeholder=''" (blur)="this.placeholder='Choose profile...'"
+                                            [(ngModel)]="profileNameFilter" name='profileNameFilter'/>
+                                    <button type="submit" class="menu-search-submit"><i class="fa fa-search"></i></button>
+                                </div>
+                            </div>
+                            <!--FancyTre Profile Names-->
+                            <div class="di__widget-scrollable-content-h320 drp-scrll-03"  (click)="ngbDropdownSource.close()">
+                                <app-fancy-tree
+                                  (selectedNode)='onSelectProfileNameNode($event)'
+                                  [source]='profileNames'
+                                  [filter]="profileNameFilter"
+                                  [notifyFilter]="notifyFilterProfileName">
+                                </app-fancy-tree>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Tree & Cleanse Rule -->
+            <app-cleanse-rules *ngIf="dataProperty.settings.cleanseDataUsing && dataProperty.settings.cleanseType==='DiClientAdapter.Command.CLEANSE.XmlCleanse'"
+                               [profile]="dataProperty.settings.cleanseDataUsing"
+                               [rules]="dataProperty.settings.cleanseRules"
+                               [validationResult]="validationResult">
+            </app-cleanse-rules>
+
+            <as-split direction="horizontal" usetransition="true" gutterSize="1" [hidden]="dataProperty.settings.cleanseType==='DiClientAdapter.Command.CLEANSE.XmlCleanse'">   <!--200427-->
+                <!-- LEFT panel: Profile Tree -->
+                <as-split-area size="40" class="bg-white">
+                    <div class="panel-heading">
+                        <a class="panel-component-title cursor-pointer"><span>JSON Profile</span></a>
+                    </div>
+                    <!-- FancyTre Profile -->
+                    <div class="">
+                    <app-fancy-tree
+                        (selectedNode)='onSelectProfileNode($event)'
+                        [source]='dataProperty.settings.cleanseDataUsing.profile'
+                        [filterOption] = 'filterOption'
+                        [filter]="nodeNameFilter">
+                    </app-fancy-tree>
+                    </div>
+                </as-split-area>
+                <!-- RIGHT panel: Element Rules (190510.200427) -->
+                <as-split-area size="60" class="bg-white">
+                    <div style="padding:1px; margin-left:5px; vertical-align:top;">
+                        <app-element-rules
+                            [branch]='branch'
+                            [rule]='rule'
+                            (ruleChange)='onRuleChange($event)'>
+                        </app-element-rules>
+                    </div>
+                </as-split-area>
+            </as-split>
+
+        </div>
+    </div>
+    <div class="di-box_footer di__ui-layout-action">
+        <button class="btn btn-success width-xs-100 mr-2"
+                type="button"
+                [disabled]="cleanseForm.form.invalid  || !validationResult.cleanseRulesValid"
+                (click)="save()">Save</button>
+        <button class="btn btn-light width-xs-100"
+                (click)="close()"
+                type="button">Cancel</button>
+    </div>
+</form>

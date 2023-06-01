@@ -1,0 +1,41 @@
+<ul class="navbar-nav ua_nav-vert-menu">
+  <li class="nav-item">
+    <a class="nav-link" routerLinkActive="active" [routerLink]="['/home']" [routerLinkActiveOptions]="{ exact: true }"
+      (click)="navItemActiveChange('/home')"><span class="material-icons icon-menu">
+        home
+      </span> <span class="ico-title">Home</span></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" routerLinkActive="active" [routerLink]="['/build']" [routerLinkActiveOptions]="{ exact: true }"
+      (click)="navItemActiveChange('/')"><span class="material-icons icon-menu"> call_split </span> <span
+        class="ico-title">Build</span></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" routerLinkActive="active" [routerLink]="['/activate']"
+      (click)="navItemActiveChange('/activate')"><span class="material-icons icon-menu"> add_alarm </span> <span
+        class="ico-title">Activate</span></a>
+  </li>
+  <li class="nav-item" ngbDropdown display="dynamic">
+    <a class="nav-link" href="javascript:void(0)" routerLinkActive="active"
+      [class.active]="rlaCustomer?.isActive || rlaDocs.isActive || rlaReport.isActive" ngbDropdownToggle><span
+        class="material-icons icon-menu"> tune </span> <span class="ico-title">Monitor</span></a>
+    <div class="dropdown-menu" aria-labelledby="id01" ngbDropdownMenu display="dynamic">
+      <a class="dropdown-item" [routerLink]="['/customer']" routerLinkActive #rlaCustomer="routerLinkActive"
+        (click)="navItemActiveChange('/customer')">Customer Management</a>
+      <a class="dropdown-item" (click)="navItemActiveChange('/document-tracking')" [routerLink]="['/document-tracking']"
+        routerLinkActive #rlaDocs="routerLinkActive">Document Tracking</a>
+      <a class="dropdown-item" (click)="navItemActiveChange('/recipe-reporting')" [routerLink]="['/recipe-reporting']"
+        routerLinkActive #rlaReport="routerLinkActive">Recipe Reporting</a>
+    </div>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" routerLinkActive="active" [routerLink]="['/settings']"
+      (click)="navItemActiveChange('/activate')"><span class="material-icons icon-menu"> settings</span> <span
+        class="ico-title">Setting</span></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" routerLinkActive="active" [routerLink]="['/setting']"
+      (click)="navItemActiveChange('/activate')"><span class="material-icons icon-menu"> help_outline</span> <span
+        class="ico-title">Help</span></a>
+  </li>
+</ul>

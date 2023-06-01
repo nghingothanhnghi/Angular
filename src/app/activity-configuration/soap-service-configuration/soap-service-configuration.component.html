@@ -1,0 +1,364 @@
+<form #soapForm="ngForm"
+      novalidate
+      class="di-box_prt bg-white min-mdw-550">
+  <div class="di-box_header no-shadow pad0A">
+    <div class="panel-heading pad10A">
+      <h4 class="panel-title">
+        <img class="icon-panel-title"
+             src="assets/imgs/svg-component/plug.svg"
+             width="18" /> SOAP
+      </h4>
+    </div>
+    <p class="text-note pad10L pad10R">
+      SOAP (Simple Object Access Protocol) is a protocol used in computing. Web services use this protocol to
+      communicate. SOAP uses XML to encode a message. It uses other application-layer protocols for transport and
+      content negotiation.
+    </p>
+    <ul class="nav nav-tabs di__nav-tabs-styled-xs">
+      <li class="nav-item"
+          *ngFor="let configItem of configItems; let index = index"
+          role="presentation"
+          [class.d-none]="
+          index === 1 && dataProperty.soapsettings.soaptype !== 'spec'
+            ? true
+            : index === 2 && dataProperty.soapsettings.soaptype !== 'enve'
+            ? true
+            : false
+        ">
+        <a class="nav-link"
+           (click)="activeConfigItemIndex = index"
+           [class.active]="activeConfigItemIndex === index"
+           role="tab"
+           data-toggle="tab"
+           href="javascript:void(0)">{{ configItem }}</a>
+      </li>
+    </ul>
+  </div>
+  <div class="di-box_content tab-content no-scrll-x">
+    <div [class.d-none]="activeConfigItemIndex !== 0"
+         role="tabpanel"
+         class="tab-pane active h-100 pt-3">
+      <!-- Display Name -->
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label col-form-label-sm text-truncate ">Display Name</label>
+        <div class="col-md-9">
+          <input type="text"
+                 class="form-control form-control-sm"
+                 [(ngModel)]="dataProperty.displayedName"
+                 [ngModelOptions]="{ standalone: true }" />
+        </div>
+      </div>
+      <!-- Connector -->
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label col-form-label-sm text-truncate">Connector</label>
+        <div class="col-md-9">
+          <select class="custom-select custom-select-sm"
+                  [(ngModel)]="dataProperty.connectortype"
+                  [ngModelOptions]="{ standalone: true }">
+            <option value="DiClientAdapter.Connectors.SOAP.SOAPConnector">
+              Web Service SOAP Client
+            </option>
+            <option value="disk">Disk</option>
+            <option value="ftp">FTP</option>
+            <option value="http-client">HTTP Client</option>
+          </select>
+        </div>
+      </div>
+      <!-- Action -->
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label col-form-label-sm text-truncate">Action</label>
+        <div class="col-md-9">
+          <select class="custom-select custom-select-sm"
+                  [(ngModel)]="dataProperty.soapsettings.action"
+                  [ngModelOptions]="{ standalone: true }">
+            <option value="execute">EXECUTE</option>
+            <option value="get">GET</option>
+            <option value="send">SEND</option>
+          </select>
+        </div>
+      </div>
+      <!-- Type -->
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label col-form-label-sm text-truncate">Type</label>
+        <div class="col-md-9">
+          <div class="panel-table">
+            <div class="panel-table-cell pad10R">
+              <label class="style-rd">
+                <input name="group_soapProperty_soaptype"
+                       value="enve"
+                       type="radio"
+                       [(ngModel)]="dataProperty.soapsettings.soaptype"
+                       [ngModelOptions]="{ standalone: true }" />
+                <span></span> <i class="style-cb-text style-cb-text-sm">Envelope</i>
+              </label>
+            </div>
+            <div class="panel-table-cell">
+              <label class="style-rd">
+                <input name="group_soapProperty_soaptype"
+                       value="spec"
+                       type="radio"
+                       [(ngModel)]="dataProperty.soapsettings.soaptype"
+                       [ngModelOptions]="{ standalone: true }" />
+                <span></span> <i class="style-cb-text style-cb-text-sm">Specification Details</i>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Envelope Group-->
+      <div [class.d-none]="dataProperty.soapsettings.soaptype !== 'enve'">
+        <!-- WSDL URL -->
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label col-form-label-sm text-truncate">WSDL URL</label>
+          <div class="col-md-9">
+            <input type="text"
+                   class="form-control form-control-sm"
+                   [(ngModel)]="dataProperty.soapsettings.operatorinfo.connectorflows[0].flows[0].envelope.wsdlurl"
+                   [ngModelOptions]="{ standalone: true }" />
+          </div>
+        </div>
+        <!-- Envelope -->
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label col-form-label-sm text-truncate">Envelope</label>
+          <div class="col-md-9">
+            <textarea rows="6"
+                      class="form-control form-control-sm"
+                      [(ngModel)]="dataProperty.soapsettings.operatorinfo.connectorflows[0].flows[0].envelope.body"
+                      [ngModelOptions]="{ standalone: true }"></textarea>
+          </div>
+        </div>
+        <!-- Test -->
+        <div class="form-group"
+             style="text-align: right;">
+          <button type="button"
+                  class="btn btn-primary"
+                  (click)="testSoapEnvelope()">
+            <span>Test</span>
+          </button>
+        </div>
+      </div>
+      <!--Specification Details Group-->
+      <div [class.d-none]="dataProperty.soapsettings.soaptype !== 'spec'">
+        <!-- Connection -->
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label col-form-label-sm text-truncate">Connection</label>
+          <div class="col-md-9">
+            <ng-select [items]="connections$ | async"
+                       bindLabel="name"
+                       bindValue="id"
+                       name="connectionId"
+                       #connectionId="ngModel"
+                       (change)="onConnectionChanged(connectionId.value)"
+                       [(ngModel)]="dataProperty.soapsettings.connectioninfo.id"
+                       class="ng-select-sm">
+              <ng-template ng-label-tmp
+                           let-item="item">
+                <button class="btn btn-light btn-sm position-relative z-index-1"
+                        (click)="openCloneComponent(dataProperty.soapsettings.connectioninfo)">
+                  <i class="fa fa-pencil-square-o"
+                     aria-hidden="true"></i>
+                </button>
+                {{ item.name }}
+              </ng-template>
+            </ng-select>
+          </div>
+        </div>
+
+        <!-- Operation -->
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label col-form-label-sm text-truncate">Operation</label>
+          <div class="col-md-9">
+            <ng-select [items]="operations$ | async"
+                       bindLabel="name"
+                       bindValue="id"
+                       name="operationId"
+                       #operationId="ngModel"
+                       (change)="onOperationChanged(operationId.value)"
+                       [(ngModel)]="dataProperty.soapsettings.operatorinfo.id"
+                       class="ng-select-sm">
+              <ng-template ng-label-tmp
+                           let-item="item">
+                <button class="btn btn-light btn-sm position-relative z-index-1"
+                        (click)="openCloneComponent(dataProperty.soapsettings.operatorinfo)">
+                  <i class="fa fa-pencil-square-o"
+                     aria-hidden="true"></i>
+                </button>
+                {{ item.name }}
+              </ng-template>
+            </ng-select>
+          </div>
+        </div>
+
+        <!-- Add Parameters -->
+        <div style="text-align: right;">
+          <button type="button"
+                  class="btn btn-primary"
+                  (click)="configParameters()">
+            <span>+ Parameters</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div [class.d-none]="activeConfigItemIndex !== 1 || dataProperty.soapsettings.soaptype !== 'spec'"
+         role="tabpanel"
+         class="tab-pane active h-100">
+      <div class="panel-heading-component mt-2 mb-3">
+        <button type="button"
+                class="btn btn-sm btn-light mr-2"
+                title="Add"
+                (click)="addParameter()">
+          <i class="fa fa-plus-circle font-blue"></i>
+          Add
+        </button>
+        <button type="button"
+                class="btn btn-sm btn-light mr-3"
+                title="Edit"
+                (click)="editParameter()">
+          <i class="fa fa-edit"></i>
+          Edit
+        </button>
+        <button type="button"
+                class="btn btn-sm btn-light rounded-circle"
+                title="Delete"
+                (click)="deleteParameter()">
+          <i class="fa fa-trash"></i>
+        </button>
+      </div>
+      <table datatable
+             [dtOptions]="parametersTableOptions"
+             [dtTrigger]="parametersTableTrigger"
+             class="table w-100 table-striped table-hover table-bordered row-border hover"></table>
+    </div>
+    <div [class.d-none]="activeConfigItemIndex !== 2 || dataProperty.soapsettings.soaptype !== 'enve'"
+         role="tabpanel"
+         class="tab-pane active h-100">
+      <div class="panel-heading-component mt-2 mb-3">
+        <button type="button"
+                class="btn btn-sm btn-light mr-2"
+                title="Add"
+                (click)="addHeader()">
+          <i class="fa fa-plus-circle fa-fw font-blue"></i>
+          Add
+        </button>
+        <button type="button"
+                class="btn btn-sm btn-light mr-3"
+                title="Edit"
+                (click)="editHeader()">
+          <i class="fa fa-edit fa-fw"></i>
+          Edit
+        </button>
+        <button type="button"
+                class="btn btn-sm btn-light rounded-circle"
+                title="Delete"
+                (click)="deleteHeader()">
+          <i class="fa fa-trash"></i>
+        </button>
+      </div>
+      <table datatable
+             [dtOptions]="headersTableOptions"
+             [dtTrigger]="headersTableTrigger"
+             class="table w-100 table-striped table-hover table-bordered row-border hover"></table>
+    </div>
+    <div [class.d-none]="activeConfigItemIndex !== 3"
+         role="tabpanel"
+         class="tab-pane active h-100 pt-3">
+      <!--Retry with error types-->
+      <div class="form-group row">
+        <label class="col-md-6 col-form-label col-form-label-sm text-truncate">
+          Retry with error types <span class="text-danger"></span>
+        </label>
+        <div class="col-md-6">
+          <select name=""
+                  class="custom-select custom-select-sm"
+                  [(ngModel)]="dataProperty.retry.retryWithErrorTypes"
+                  [ngModelOptions]="{ standalone: true }">
+            <option value="">None</option>
+            <option value="50x">50x</option>
+          </select>
+        </div>
+      </div>
+      <!--Retry Number-->
+      <div class="form-group row"
+           [class.d-none]="!dataProperty.retry.retryWithErrorTypes">
+        <label class="col-md-6 col-form-label col-form-label-sm">No.of Retry Times</label>
+        <div class="col-md-6">
+          <input type="number"
+                 name="retryNumber"
+                 class="form-control form-control-sm"
+                 [(ngModel)]="dataProperty.retry.retryNumber"
+                 #retryNumber="ngModel"
+                 [class.is-invalid]="retryNumber.invalid && retryNumber.touched"
+                 pattern="^\d$|^[1][0]$"
+                 required
+                 min="0"
+                 max="10" />
+          <div *ngIf="retryNumber.errors && (retryNumber.invalid || retryNumber.untouched)">
+            <small class="text-danger"
+                   *ngIf="retryNumber.errors.required">Not a number</small>
+            <small class="text-danger"
+                   *ngIf="retryNumber.errors.pattern">Not a valid number</small>
+          </div>
+        </div>
+      </div>
+      <!--Sleep Time Between Failures-->
+      <div class="form-group row"
+           [class.d-none]="!dataProperty.retry.retryWithErrorTypes">
+        <label class="col-md-6 col-form-label col-form-label-sm text-truncate">Time Sleep of Retry (seconds)</label>
+        <div class="col-md-6">
+          <input type="number"
+                 name="sleepTimeBF"
+                 class="form-control form-control-sm"
+                 [(ngModel)]="dataProperty.retry.sleepTimeBF"
+                 #sleepTimeBF="ngModel"
+                 [class.is-invalid]="sleepTimeBF.invalid && sleepTimeBF.touched"
+                 pattern="^[2-9]$|^[1-5][0-9]{1,2}$|^[6][0-9]{1}$|^[6-9][0-9]{1}$|^[6][0]{2}$"
+                 required
+                 min="2"
+                 max="600" />
+          <div *ngIf="sleepTimeBF.errors && (sleepTimeBF.invalid || sleepTimeBF.untouched)">
+            <small class="text-danger"
+                   *ngIf="sleepTimeBF.errors.required">Not a number</small>
+            <small class="text-danger"
+                   *ngIf="sleepTimeBF.errors.pattern">Not a valid number</small>
+          </div>
+        </div>
+      </div>
+      <!--TimeOut-->
+      <div class="form-group row"
+           [class.d-none]="!dataProperty.retry.retryWithErrorTypes">
+        <label class="col-md-6 col-form-label col-form-label-sm text-truncate">Time Out of Retry (seconds)</label>
+        <div class="col-md-6">
+          <input type="number"
+                 name="timeOut"
+                 class="form-control form-control-sm"
+                 [(ngModel)]="dataProperty.retry.timeOut"
+                 #timeOut="ngModel"
+                 [class.is-invalid]="timeOut.invalid && timeOut.touched"
+                 pattern="^[1][0]$|^[1-5][0-9]{1,2}$|^[6][0-9]{1}$|^[6-9][0-9]{1}$|^[6][0]{2}$"
+                 required
+                 min="10"
+                 max="600" />
+          <div *ngIf="timeOut.errors && (timeOut.invalid || timeOut.untouched)">
+            <small class="text-danger"
+                   *ngIf="timeOut.errors.required">Not a number</small>
+            <small class="text-danger"
+                   *ngIf="timeOut.errors.pattern">Not a valid number</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="di-box_footer di__ui-layout-action">
+    <button class="btn btn-success width-xs-100 mr-2"
+            type="button"
+            [disabled]="dataProperty.retry.retryWithErrorTypes && soapForm.form.invalid"
+            (click)="save()">
+      Save
+    </button>
+    <button class="btn btn-light width-xs-100"
+            (click)="close()"
+            type="button">
+      Cancel
+    </button>
+  </div>
+</form>

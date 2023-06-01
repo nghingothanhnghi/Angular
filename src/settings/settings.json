@@ -1,0 +1,10 @@
+{
+ "service": "http://uadev.dicentral.com.vn:8880",
+  "authService": "http://uadev.dicentral.com.vn:8881",
+  "documentTrackingService": "http://uadev.dicentral.com.vn:8882",
+  "processReportingService": "http://uadev.dicentral.com.vn:8882",
+  "activateService": "http://uadev.dicentral.com.vn:8882",
+  "customerService": "http://uadev.dicentral.com.vn:8881",
+  "billingInfoService": "http://uadev.dicentral.com.vn:8881",
+  "billingHistoryService": "http://uadev.dicentral.com.vn:8882"
+}

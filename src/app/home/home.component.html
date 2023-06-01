@@ -1,0 +1,18 @@
+
+  <as-split useTransition="true" disabled="true" gutterSize="1" class="bg-white">
+      <as-split-area [size]="20">
+        <app-recently-opened></app-recently-opened>  
+      </as-split-area>
+      <as-split-area [size]="80">
+        <div class="row">
+            <div class="col-12 col-sm-9"><app-video-swiper></app-video-swiper></div>
+            <div class="col-12 col-sm-3"><app-help></app-help></div>
+        </div>
+        <hr> 
+        <div class="row">
+            <div class="col-12 col-sm-9">
+                <app-activities-intro></app-activities-intro>
+            </div>
+        </div>         
+      </as-split-area>
+  </as-split>

@@ -1,0 +1,47 @@
+<as-split unit="pixel" disabled="true" gutterSize="1">
+    <as-split-area size="220" class="bg-white di-sidebar-area">
+        <app-component-tree></app-component-tree>
+    </as-split-area>
+    <as-split-area size="*">
+        <div class="di-box_prt">
+            <div class="di-box_header di-box_header-tab have-right">
+                <div class="di-head-tab">
+                    <!--Tabs-->
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item" *ngFor="let component of components; let first = first"
+                            [ngClass]="{ firstItem: first }" role="presentation">
+                            <a class="nav-link" [class.active]="activedComponent === component"
+                                (click)="activedComponent = component" role="tab" data-toggle="tab"
+                                href="javascript:void(0)">{{ component }}</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="di-head-action"> <button (click)="openNewComponentModal()"
+                        class="btn btn-outline-dark btn-sm pl-3 pr-3 mr-2" type="button">
+                        <mat-icon>ic_add_circle_outline</mat-icon> Create New
+                    </button> 
+                    <button 
+                        class="btn btn-secondary btn-sm pl-3 pr-3 mr-2" type="button">
+                        <mat-icon>ic_play_arrow</mat-icon> Excute Test
+                    </button> 
+                    <button class="btn btn-light btn-sm font-blue mr-2" type="button">Save</button> <button
+                        class="btn btn-default btn-sm" type="button">Cancel</button>
+                </div>
+            </div>
+            <div class="di-box_content tab-content no-scrll pad0A">
+                <div [hidden]="activedComponent !== components[0]"
+                role="tabpanel"
+                class="tab-pane active h-100">
+                <app-recipe></app-recipe>
+            </div>
+                <div [hidden]="activedComponent !== components[1]"
+                role="tabpanel"
+                class="tab-pane active h-100"></div>
+                <div [hidden]="activedComponent !== components[2]"
+                role="tabpanel"
+                class="tab-pane active h-100"></div>
+                
+            </div>
+        </div>
+    </as-split-area>
+</as-split>

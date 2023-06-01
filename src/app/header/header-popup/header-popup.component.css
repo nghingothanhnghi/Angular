@@ -1,0 +1,30 @@
+
+
+.nav-item{ text-align: center;}
+.nav-item .nav-link{ padding-left: 0; padding-right: 0;}
+.nav-item .dropdown-toggle::after{ display: none;}
+.user-name-txt{ display:none}
+@media (min-width:900px){
+  .user-name-txt {
+    display: inline !important;
+  }
+}
+.di_acc-box {
+  display: flex;
+  padding: 5px 15px 15px;
+  align-items: center;
+}
+.di_acc-box-avata{
+  margin-right:10px
+}
+.di_acc-title{
+  font-size:13px;
+  font-weight:600;
+}
+@media (min-width:768px) {
+  .box-sm {
+    min-width: 20rem;
+  }
+}
+
+

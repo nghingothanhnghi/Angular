@@ -1,0 +1,5334 @@
+[
+  {
+    "FunctionName": "Abs",
+    "Description": "Sets the current value to the positive value of itself. If the current value is string or a date, it will not do anything.",
+    "Category": "Data manipulation",
+    "ParameterList": []
+  },
+  {
+    "FunctionName": "Addconversion",
+    "Description": "Adds a static conversion to the function processing. This conversion will be run for all strings sent to and from function processing. This functionality will typically be used when a character in the a source document should be converted into something else throughout the whole source document. When several conversions are added, they will all be used at the same time, either before or after function processing. Remember to run clearconversion function when conversion is not needed anymore.",
+    "Category": "Conversion",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "fromvalue",
+        "IsEditable": true,
+        "Allowblank": true,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The string value that should be converted from",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "tovalue",
+        "IsEditable": true,
+        "Allowblank": true,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The string value that should be converted to ",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "position",
+        "IsEditable": false,
+        "Allowblank": true,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "ValueList": [
+          "Any",
+          "Left"
+        ],
+        "Description": "The position of the string ",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      }
+    ]
+  },
+  {
+    "FunctionName": "AddDate",
+    "Description": "Add to a datetime variable.",
+    "Category": "Data manipulation",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "name",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [
+          "@currentvalue"
+        ],
+        "Description": "Name of date variable to add to",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "value",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "Value to be added",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "datepart",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "ValueList": [
+          "year",
+          "month",
+          "day",
+          "hour",
+          "minute",
+          "second"
+        ],
+        "Description": "Select time part to add.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      }
+    ]
+  },
+  {
+    "FunctionName": "AddStringConversion",
+    "Description": "Adds a static conversion to the function processing. Full string conversion. This conversion can be organized into several lists, and it will have to be called every time it should be used with the Stringconvert function. One conversion list may be unit description list, where you may want to convert all UNITS into PCE, LITRE to LTR... All these conversions can be added to the same list, and when a conversion of this type is needed, only this list will be called. Remember to run clearconversion function when conversion is not needed anymore.",
+    "Category": "Conversion",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "list",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "the conversion list that the conversion should be added to",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "fromvalue",
+        "IsEditable": true,
+        "Allowblank": true,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The string value that should be converted from",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "tovalue",
+        "IsEditable": true,
+        "Allowblank": true,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The string value that should be converted to ",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      }
+    ]
+  },
+  {
+    "FunctionName": "AndIf",
+    "Description": "Does a comparison and lets processing fall through to next function if the comparison is true. If the comparison is false, processing will look for endif, else or elseif.",
+    "Category": "Flow control",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "lvalue",
+        "IsEditable": true,
+        "Allowblank": true,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [
+          "@currentvalue"
+        ],
+        "Description": "The value on the left side of the comparison Legal values: @currentvalue indicates that the value returned from the previous function. @othervalue indicates that the value should be retrieved from the variable 'othervalue'. Values not starting with @ will be used as is.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "rvalue",
+        "IsEditable": true,
+        "Allowblank": true,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [
+          "@currentvalue"
+        ],
+        "Description": "The value on the right side of the comparison. Legal values: @currentvalue indicates that the value returned from the previous function. @othervalue indicates that the value should be retrieved from the variable 'othervalue'. Values not starting with @ will be used as is.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "operator",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "ValueList": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<="
+        ],
+        "Description": "The comparison operator.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "datatype",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": true,
+        "IsReadOnly": true,
+        "ValueList": [
+          "text",
+          "integer",
+          "money",
+          "float",
+          "datetime"
+        ],
+        "Description": "which datatype the values should be when they are compared.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      }
+    ]
+  },
+  {
+    "FunctionName": "Break",
+    "Description": "The Break function is used to exit from the current While ... EndWhile or Do ... LoopWhile section before its normal ending",
+    "Category": "Flow control",
+    "ParameterList": []
+  },
+  {
+    "FunctionName": "CheckMinMax",
+    "Description": "Check a value is in a range. Current value is 1 if the value is in range. The value input, min, max can be a number or a character",
+    "Category": "Conversion",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "value",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The value will be used to check.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "min",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The value will be used as min value.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "max",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The value will be used as max value.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "ValueType",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "ValueList": [
+          "Length",
+          "Number"
+        ],
+        "Description": "Length: check length of input value. Number: ",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "checktype",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "ValueList": [
+          "[,]",
+          "[,)",
+          "(,]",
+          "(,)"
+        ],
+        "Description": "",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      }
+    ]
+  },
+  {
+    "FunctionName": "Clearconversion",
+    "Description": "Removes all conversions that has been set with the addconversion function.",
+    "Category": "Conversion",
+    "ParameterList": []
+  },
+  {
+    "FunctionName": "Clearfilter",
+    "Description": "Clears all filters in all EXD.",
+    "Category": "Exchange",
+    "ParameterList": []
+  },
+  {
+    "FunctionName": "Clearfilterall",
+    "Description": "Clears all filters in all EXD. Will also remove the automatic filter that filters away messages with errors.",
+    "Category": "Exchange",
+    "ParameterList": []
+  },
+  {
+    "FunctionName": "ClearTemplateRow",
+    "Description": "Clears the template row",
+    "Category": "Source mapping",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "exd",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "Source": "EXD_name",
+        "ValueList": [],
+        "Description": "Name of EXD",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "table",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "Source": "EXD_table",
+        "ValueList": [],
+        "Description": "Name of table",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      }
+    ]
+  },
+  {
+    "FunctionName": "Comment",
+    "Description": "Comment out the function",
+    "Category": "Flow control",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "content",
+        "IsEditable": true,
+        "Allowblank": true,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "Content of the comment",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      }
+    ]
+  },
+  {
+    "FunctionName": "ContinueLoop",
+    "Description": "Skip a rest of functions in a while loop and start from top again.",
+    "Category": "Flow control",
+    "ParameterList": []
+  },
+  {
+    "FunctionName": "ContinueMessage",
+    "Description": "For Flat File Target Only! Skip one lap in the loop/group and continue with the next one.",
+    "Category": "Target mapping",
+    "ParameterList": []
+  },
+  {
+    "FunctionName": "Convert",
+    "Description": "Converts the current value into a any format",
+    "Category": "Conversion",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "datatype",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "ValueList": [
+          "Text",
+          "Integer",
+          "Money",
+          "Datetime",
+          "Float"
+        ],
+        "Description": "The datatype to convert the value into ",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "format",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": true,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The format mask that will be used to format current value.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      }
+    ]
+  },
+  {
+    "FunctionName": "CreateGUID",
+    "Description": "Creates a GUID.",
+    "Category": "External resources",
+    "ParameterList": []
+  },
+  {
+    "FunctionName": "CurrentFileName",
+    "Description": "Get processing file name.",
+    "Category": "External resources",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "variable",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": true,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "Return value to variable, if missing this parameter then return currentvalue.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "filepart",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "ValueList": [
+          "FullPath",
+          "Filename",
+          "FilenameWithoutExtension",
+          "Directory"
+        ],
+        "Description": "Returns the file part of the specified path.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      }
+    ]
+  },
+  {
+    "FunctionName": "Debug",
+    "Description": "Indicates that the following functions should send full information to debug-log. If no parameter are set, i.e. no variable name, the content of @currentvalue are reported.",
+    "Category": "Debug",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "variable",
+        "IsEditable": true,
+        "Allowblank": true,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The name of a variable to watch.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "tracefile",
+        "IsEditable": true,
+        "Allowblank": true,
+        "IsDropDown": false,
+        "IsOptional": true,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The file name to put trace info into",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "traceall",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": true,
+        "IsReadOnly": false,
+        "ValueList": [
+          "Y",
+          "N"
+        ],
+        "Description": "Y - trace all nodes. N - just trace current node",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      }
+    ]
+  },
+  {
+    "FunctionName": "Defaultvalue",
+    "Description": "Sets a default value in a function list. If the previous function (or the message) returned a value, this value will be used, if not, the default value will be used.",
+    "Category": "Data manipulation",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "value",
+        "IsEditable": true,
+        "Allowblank": true,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The value to be used",
+        "IsControlEllipse": true,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      }
+    ]
+  },
+  {
+    "FunctionName": "DelimitedMid",
+    "Description": "Extracts a sub-string out of the current string.",
+    "Category": "Data manipulation",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "value",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": true,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The value that should be searched. If not specified, the current value will be used.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "start",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": true,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The string that identifies where the sub string should start from",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "end",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": true,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The string that identifies where the sub string should end",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "fieldseparator",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": true,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "If we are retrieving a field, this parameter specifies the separator between fields",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "fieldno",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": true,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "If we are retrieving a field, this parameter specifies the field number",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "key",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": true,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "If we are retrieving a field, and the field has a key this parameter specifies the key we are looking for",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "keyseparator",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": true,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "If we are retrieving a field, and the field has a key this parameter specifies the key separator",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "outputvariable",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": true,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "If specified, the result will be put into this variable. The current value will then get the value 1 if a value was found, and 0 if not. If an output variable is not specified the result will be sent to the current value.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      }
+    ]
+  },
+  {
+    "FunctionName": "Div",
+    "Description": "DIV operation in math - result is an integer after division.",
+    "Category": "Data manipulation",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "divisor",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The divisor value in division",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "value",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": true,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The value that we want to process. Default is @currentvalue",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      }
+    ]
+  },
+  {
+    "FunctionName": "Do",
+    "Description": "Start loop while section",
+    "Category": "Flow control",
+    "ParameterList": []
+  },
+  {
+    "FunctionName": "Else",
+    "Description": "Marks the end of the 'true'-part of an if-section and starts the 'false'-part of the if-section.",
+    "Category": "Flow control",
+    "ParameterList": []
+  },
+  {
+    "FunctionName": "Elseif",
+    "Description": "Does a comparison and lets processing fall through to next function if the comparison is true. If the comparison is false, processing will look for endif, else or elseif.",
+    "Category": "Flow control",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "lvalue",
+        "IsEditable": true,
+        "Allowblank": true,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [
+          "@currentvalue"
+        ],
+        "Description": "The value on the left side of the comparison Legal values: @currentvalue indicates that the value returned from the previous function. @othervalue indicates that the value should be retrieved from the variable 'othervalue'. Values not starting with @ will be used as is.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "rvalue",
+        "IsEditable": true,
+        "Allowblank": true,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [
+          "@currentvalue"
+        ],
+        "Description": "The value on the right side of the comparison. Legal values: @currentvalue indicates that the value returned from the previous function. @othervalue indicates that the value should be retrieved from the variable 'othervalue'. Values not starting with @ will be used as is.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "operator",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "ValueList": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<="
+        ],
+        "Description": "The comparison operator.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "datatype",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": true,
+        "IsReadOnly": true,
+        "ValueList": [
+          "text",
+          "integer",
+          "money",
+          "float",
+          "datetime"
+        ],
+        "Description": "which datatype the values should be when they are compared.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      }
+    ]
+  },
+  {
+    "FunctionName": "EndIf",
+    "Description": "Marks the end of an if-section",
+    "Category": "Flow control",
+    "ParameterList": []
+  },
+  {
+    "FunctionName": "EndRegion",
+    "Description": "Marks the end of region the section.",
+    "Category": "Flow control",
+    "ParameterList": []
+  },
+  {
+    "FunctionName": "EndWhile",
+    "Description": "Marks the end of an while-section",
+    "Category": "Flow control",
+    "ParameterList": []
+  },
+  {
+    "FunctionName": "Exit",
+    "Description": "End process component, return value is 0",
+    "Category": "Flow control",
+    "ParameterList": []
+  },
+  {
+    "FunctionName": "FileDelete",
+    "Description": "Delete a file",
+    "Category": "External resources",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "name",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The file to delete.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      }
+    ]
+  },
+  {
+    "FunctionName": "FileMove",
+    "Description": "Move or copy a file.",
+    "Category": "External resources",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "fromdir",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The directory to copy/move from.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "fromfile",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The file name to copy/move from.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "todir",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The directory to copy/move to.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "tofile",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The file name to copy/move to.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "makecopy",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "ValueList": [
+          "yes",
+          "no"
+        ],
+        "Description": "Choose yes to make a copy. Choose no to move",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      }
+    ]
+  },
+  {
+    "FunctionName": "FileRead",
+    "Description": "Read text from a file into a variable.",
+    "Category": "External resources",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "filename",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The file to read.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "variable",
+        "IsEditable": true,
+        "Allowblank": true,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The variable to read into",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      }
+    ]
+  },
+  {
+    "FunctionName": "FileWrite",
+    "Description": "Write text to a file.",
+    "Category": "External resources",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "filename",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The file to write.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "mode",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "ValueList": [
+          "a",
+          "w"
+        ],
+        "Description": "File open mode (w - overwrite, a - append)",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "text",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The text to write",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      }
+    ]
+  },
+  {
+    "FunctionName": "Find",
+    "Description": "Returns the position of the substring in a main string",
+    "Category": "Data manipulation",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "String",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The string to search for.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "Position",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": true,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "Name of the variable to put the result in. (Should start with @).",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "StartPosition",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": true,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "Where in the main string to start. 1 is the first position.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "Replace",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": true,
+        "IsReadOnly": true,
+        "ValueList": [
+          "None",
+          "First",
+          "All",
+          "Recursive"
+        ],
+        "Description": "What kind of replace will be used",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "ReplaceString",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": true,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The string to replace the found string with.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      }
+    ]
+  },
+  {
+    "FunctionName": "FindNextrow",
+    "Description": "Works like Nextrow, but will in addition set a find criteria.On mapping to a target, nextrow will find the next row in a table that matches the find criteria.",
+    "Category": "Target mapping",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "exd",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "Source": "EXD_name",
+        "ValueList": [],
+        "Description": "Name of EXD",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "table",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "Source": "EXD_table",
+        "ValueList": [],
+        "Description": "Name of table",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "field",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "Source": "EXD_field",
+        "ValueList": [],
+        "Description": "The name of the field",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "value",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The key value search for",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      }
+    ]
+  },
+  {
+    "FunctionName": "Fixedvalue",
+    "Description": "Similar to defaultvalue, but fixedvalue will set a new current value even if there is a current value already.",
+    "Category": "Data manipulation",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "value",
+        "IsEditable": true,
+        "Allowblank": true,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The value to be used ",
+        "IsControlEllipse": true,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      }
+    ]
+  },
+  {
+    "FunctionName": "Format",
+    "Description": "Formats the current value into a text string.",
+    "Category": "Data manipulation",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "format",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The format mask that will be used to format current value.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      }
+    ]
+  },
+  {
+    "FunctionName": "FunctionGroup",
+    "Description": "Using function group name which will be replaced by a group of function when exporting runtime.",
+    "Category": "FunctionGroup",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "Name",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "Source": "GROUP_NAME",
+        "ValueList": [],
+        "Description": "Name of function group.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      }
+    ]
+  },
+  {
+    "FunctionName": "Getcounter",
+    "Description": "Increases and retrieves a counter value from an external file (\"counter.dat\").",
+    "Category": "External resources",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "name",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The name of the counter.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      }
+    ]
+  },
+  {
+    "FunctionName": "Getjobno",
+    "Description": "Returns the job number.",
+    "Category": "External resources",
+    "ParameterList": []
+  },
+  {
+    "FunctionName": "GetLineNumber",
+    "Description": "Return line number of record in DiTranslator source file (TRN).",
+    "Category": "Source mapping",
+    "ParameterList": []
+  },
+  {
+    "FunctionName": "GetNextrow",
+    "Description": "On mapping to a target, nextrow will find the next row in a table. Will not loop like NextRow. Returns 1 if it found a new row. Returns 0 if it doesn't find a new row.",
+    "Category": "Target mapping",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "exd",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "Source": "EXD_name",
+        "ValueList": [],
+        "Description": "Name of EXD",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "table",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "Source": "EXD_table",
+        "ValueList": [],
+        "Description": "Name of table",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      }
+    ]
+  },
+  {
+    "FunctionName": "Getpartnervalue",
+    "Description": "Get a partner value",
+    "Category": "External resources",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "key",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "Source": "Partnerkeys",
+        "ValueList": [],
+        "Description": "The key for the partner value.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      }
+    ]
+  },
+  {
+    "FunctionName": "GetRow",
+    "Description": "Search through a a given EIF table for a specific field value in a row. Set @currentvalue to 1 if  found and 0 if not found.",
+    "Category": "Target mapping",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "exd",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "Source": "EXD_name",
+        "ValueList": [],
+        "Description": "Name of EXD",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "table",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "Source": "EXD_table",
+        "ValueList": [],
+        "Description": "Name of table",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "field",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "Source": "EXD_field",
+        "ValueList": [],
+        "Description": "The name of the field",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "value",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The key value search for",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      }
+    ]
+  },
+  {
+    "FunctionName": "GetUserLogin",
+    "Description": "Get user login",
+    "Category": "External resources",
+    "ParameterList": []
+  },
+  {
+    "FunctionName": "Getvalue",
+    "Description": "Gets a value from the EXD.",
+    "Category": "Target mapping",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "exd",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "Source": "EXD_name",
+        "ValueList": [],
+        "Description": "Name of EXD",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "table",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "Source": "EXD_table",
+        "ValueList": [],
+        "Description": "Name of table",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "field",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "Source": "EXD_field",
+        "ValueList": [],
+        "Description": "Name of field",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "aggregate",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": true,
+        "IsReadOnly": true,
+        "ValueList": [
+          "none",
+          "sum",
+          "min",
+          "max",
+          "count",
+          "average",
+          "first",
+          "last"
+        ],
+        "Description": "Optional. This parameter is used when we want to retrieve data from a table that is not yet selected with NextRow, FindNextRow or GetRow. Since there may be several rows an aggregate function needs to be chosen.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      }
+    ]
+  },
+  {
+    "FunctionName": "Getvariable",
+    "Description": "Gets a value from a variable.",
+    "Category": "Variable",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "name",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The name of the variable.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      }
+    ]
+  },
+  {
+    "FunctionName": "GroupTable",
+    "Description": "GroupTable will sum similar rows into one row.",
+    "Category": "Exchange",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "exd",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "Source": "EXD_name",
+        "ValueList": [],
+        "Description": "Name of EXD",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "table",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "Source": "EXD_table",
+        "ValueList": [],
+        "Description": "Name of table",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "field1",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "Source": "EXD_field",
+        "ValueList": [],
+        "Description": "The name of the first key field.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "field2",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": true,
+        "IsReadOnly": true,
+        "Source": "EXD_field",
+        "ValueList": [],
+        "Description": "The name of the second key field.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "field3",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": true,
+        "IsReadOnly": true,
+        "Source": "EXD_field",
+        "ValueList": [],
+        "Description": "The name of the third key field.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "field4",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": true,
+        "IsReadOnly": true,
+        "Source": "EXD_field",
+        "ValueList": [],
+        "Description": "The name of the fourth key field.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "field5",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": true,
+        "IsReadOnly": true,
+        "Source": "EXD_field",
+        "ValueList": [],
+        "Description": "The name of the fifth key field.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "sumField1",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": true,
+        "IsReadOnly": true,
+        "Source": "EXD_field",
+        "ValueList": [],
+        "Description": "The name of the first field that needs to be summed.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "sumField2",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": true,
+        "IsReadOnly": true,
+        "Source": "EXD_field",
+        "ValueList": [],
+        "Description": "The name of the second field that needs to be summed.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "sumField3",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": true,
+        "IsReadOnly": true,
+        "Source": "EXD_field",
+        "ValueList": [],
+        "Description": "The name of the third field that needs to be summed.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "sumField4",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": true,
+        "IsReadOnly": true,
+        "Source": "EXD_field",
+        "ValueList": [],
+        "Description": "The name of the fourth field that needs to be summed.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "sumField5",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": true,
+        "IsReadOnly": true,
+        "Source": "EXD_field",
+        "ValueList": [],
+        "Description": "The name of the fifth field that needs to be summed.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      }
+    ]
+  },
+  {
+    "FunctionName": "If",
+    "Description": "Does a comparison and lets processing fall through to next function if the comparison is true. If the comparison is false, processing will look for endif, else or elseif.",
+    "Category": "Flow control",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "lvalue",
+        "IsEditable": true,
+        "Allowblank": true,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [
+          "@currentvalue"
+        ],
+        "Description": "The value on the left side of the comparison Legal values: @currentvalue indicates that the value returned from the previous function. @othervalue indicates that the value should be retrieved from the variable 'othervalue'. Values not starting with @ will be used as is.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "rvalue",
+        "IsEditable": true,
+        "Allowblank": true,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [
+          "@currentvalue"
+        ],
+        "Description": "The value on the right side of the comparison. Legal values: @currentvalue indicates that the value returned from the previous function. @othervalue indicates that the value should be retrieved from the variable 'othervalue'. Values not starting with @ will be used as is.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "operator",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "ValueList": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<="
+        ],
+        "Description": "The comparison operator.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "datatype",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": true,
+        "IsReadOnly": true,
+        "ValueList": [
+          "text",
+          "integer",
+          "money",
+          "float",
+          "datetime"
+        ],
+        "Description": "which datatype the values should be when they are compared.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      }
+    ]
+  },
+  {
+    "FunctionName": "IfInList",
+    "Description": "Looks for the current value in a x-ref list. If the value is found processing will continue at next function, else processing will look for endif, else or elseif.",
+    "Category": "Flow control",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "filename",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The name of the file where the x-ref list is",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "section",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "the section, within the file, where the list is.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "casesensitive",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "ValueList": [
+          "True",
+          "False"
+        ],
+        "Description": "Should the comparison be case sensitive?",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "load",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "ValueList": [
+          "True",
+          "False"
+        ],
+        "Description": "Should the x-ref list be loaded into memory?",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      }
+    ]
+  },
+  {
+    "FunctionName": "Iif",
+    "Description": "Inline if does a comparison and returns the true part if the comparison is a success. If the comparison is false it will return the false part.",
+    "Category": "Flow control",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "lvalue",
+        "IsEditable": true,
+        "Allowblank": true,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [
+          "@currentvalue"
+        ],
+        "Description": "The value on the left side of the comparison Legal values: @currentvalue indicates that the value returned from the previous function. @othervalue indicates that the value should be retrieved from the variable 'othervalue'. Values not starting with @ will be used as is.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "rvalue",
+        "IsEditable": true,
+        "Allowblank": true,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [
+          "@currentvalue"
+        ],
+        "Description": "The value on the right side of the comparison. Legal values: @currentvalue indicates that the value returned from the previous function. @othervalue indicates that the value should be retrieved from the variable 'othervalue'. Values not starting with @ will be used as is.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "operator",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "ValueList": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<="
+        ],
+        "Description": "The comparison operator.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "datatype",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": true,
+        "IsReadOnly": true,
+        "ValueList": [
+          "text",
+          "integer",
+          "money",
+          "float",
+          "datetime"
+        ],
+        "Description": "which datatype the values should be when they are compared.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "TruePart",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The value that is returned if the comparison is true",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "FalsePart",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The value that is returned if the comparison is false",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      }
+    ]
+  },
+  {
+    "FunctionName": "InsertDelimiter",
+    "Description": "Insert or replace a sub-string into the current string.",
+    "Category": "Data manipulation",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "sections",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": true,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The string that should be used. If not specified, the current value will be used.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "value",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The value that should be inserted.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "start",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The string that identifies where the sub string should start from. If the start can not found then this string will be inserted.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "end",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": true,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The string that identifies where the sub string should end",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "fieldseparator",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "If we are inserting a field, this parameter specifies the separator between fields",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "key",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "If we are inserting a field, and the field has a key this parameter specifies the key we are inserting",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "keyseparator",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "If we are inserting a field, and the field has a key this parameter specifies the key separator",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      }
+    ]
+  },
+  {
+    "FunctionName": "IsNumeric",
+    "Description": "Check a value is whether numeric or not.",
+    "Category": "Debug",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "value",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "the value to check numeric.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "datatype",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": true,
+        "IsReadOnly": true,
+        "ValueList": [
+          "text",
+          "integer",
+          "float"
+        ],
+        "Description": "which datatype the values should be when they are checked.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "outputvariable",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The name of the output variable: valid: 1, invalid: 0",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "severity",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "ValueList": [
+          "info",
+          "warning",
+          "error",
+          "fatal"
+        ],
+        "Description": "The severity of the checking error.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "message",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The message that should be sent when this checking fails.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      }
+    ]
+  },
+  {
+    "FunctionName": "Left",
+    "Description": "Extracts a sub-string out of the beginning of the current string.",
+    "Category": "Data manipulation",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "length",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "the length of the sub-string.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "value",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": true,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The string value that we want the left part of. Default is @currentvalue",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      }
+    ]
+  },
+  {
+    "FunctionName": "Length",
+    "Description": "Returns the length of a text",
+    "Category": "Data manipulation",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "value",
+        "IsEditable": true,
+        "Allowblank": true,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "the value to get the length of.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      }
+    ]
+  },
+  {
+    "FunctionName": "Loadexd",
+    "Description": "Loads an EXD from a file in xml format.",
+    "Category": "Debug",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "exd",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The document reference of the EXD description (filename.xml#exdname)",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "filename",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The name of the file to load from",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "category",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The category that the new EXD should have",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      }
+    ]
+  },
+  {
+    "FunctionName": "Lookup",
+    "Description": "Looks up the current value in a x-ref list and finds the corresponding value.",
+    "Category": "Conversion",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "filename",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The name of the file where the x-ref list is",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "section",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "the section, within the file, where the list is.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "casesensitive",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "ValueList": [
+          "True",
+          "False"
+        ],
+        "Description": "Should the comparison be case sensitive?",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "load",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "ValueList": [
+          "True",
+          "False"
+        ],
+        "Description": "Should the x-ref list be loaded into memory?",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "key",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": true,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The key, within the section, where the list is, default is current value.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "default",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": true,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The value that will be set if current value was not found in the list",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      }
+    ]
+  },
+  {
+    "FunctionName": "LookupAdv",
+    "Description": "Looks up the current value in a x-ref list and finds the corresponding value.",
+    "Category": "Conversion",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "filename",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The name of the file where the x-ref list is",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "recordseparator",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": true,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The symbols that separates records",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "fieldseparator",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": true,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The symbols that separates fields",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "keyfieldno",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": true,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The field that holds the key value",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "valuefieldno",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": true,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The field that holds the return value",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "casesensitive",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "ValueList": [
+          "True",
+          "False"
+        ],
+        "Description": "Should the comparison be case sensitive?",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "load",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "ValueList": [
+          "True",
+          "False"
+        ],
+        "Description": "Should the x-ref list be loaded into memory?",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "key",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": true,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The key, within the section, where the list is, default is current value.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "default",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": true,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The value that will be set if current value was not found in the list",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      }
+    ]
+  },
+  {
+    "FunctionName": "LoopWhile",
+    "Description": "Loop a set of function if the comparison is true.",
+    "Category": "Flow control",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "lvalue",
+        "IsEditable": true,
+        "Allowblank": true,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [
+          "@currentvalue"
+        ],
+        "Description": "The value on the left side of the comparison Legal values: @currentvalue indicates that the value returned from the previous function. @othervalue indicates that the value should be retrieved from the variable 'othervalue'. Values not starting with @ will be used as is.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "rvalue",
+        "IsEditable": true,
+        "Allowblank": true,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [
+          "@currentvalue"
+        ],
+        "Description": "The value on the right side of the comparison. Legal values: @currentvalue indicates that the value returned from the previous function. @othervalue indicates that the value should be retrieved from the variable 'othervalue'. Values not starting with @ will be used as is.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "operator",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "ValueList": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<="
+        ],
+        "Description": "The comparison operator.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "datatype",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": true,
+        "IsReadOnly": true,
+        "ValueList": [
+          "text",
+          "integer",
+          "money",
+          "float",
+          "datetime"
+        ],
+        "Description": "which datatype the values should be when they are compared.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      }
+    ]
+  },
+  {
+    "FunctionName": "LowerCase",
+    "Description": "Convert the string variable into lowercase.",
+    "Category": "Data manipulation",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "variable",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": true,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The string variable.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      }
+    ]
+  },
+  {
+    "FunctionName": "Mid",
+    "Description": "Extracts a sub-string out of the current string.",
+    "Category": "Data manipulation",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "position",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "the start position of the sub-string within the main string. Must be larger than 0.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "length",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": true,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "the length of the sub-string. If negative or not specified, it will get the rest of the string.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "value",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": true,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The string value that we want to extract a string from. Default is @currentvalue",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      }
+    ]
+  },
+  {
+    "FunctionName": "Mod",
+    "Description": "MOD operation in math - result is the remainder after division.",
+    "Category": "Data manipulation",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "datatype",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "ValueList": [
+          "integer",
+          "float"
+        ],
+        "Description": "Datatype of the value will be divided.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "divisor",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The divisor value in division",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "value",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": true,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The value that we want to process. Default is @currentvalue",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      }
+    ]
+  },
+  {
+    "FunctionName": "Newrow",
+    "Description": "When mapping from a source document, newrow will add a new row to a table in an EXD.",
+    "Category": "Source mapping",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "exd",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "Source": "EXD_name",
+        "ValueList": [],
+        "Description": "Name of EXD",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "table",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "Source": "EXD_table",
+        "ValueList": [],
+        "Description": "Name of table",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      }
+    ]
+  },
+  {
+    "FunctionName": "Nextrow",
+    "Description": "On mapping to a target, nextrow will find the next row in a table.",
+    "Category": "Target mapping",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "exd",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "Source": "EXD_name",
+        "ValueList": [],
+        "Description": "Name of EXD",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "table",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "Source": "EXD_table",
+        "ValueList": [],
+        "Description": "Name of table",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      }
+    ]
+  },
+  {
+    "FunctionName": "Now",
+    "Description": "Returns a datetime with current date and time.",
+    "Category": "Data manipulation",
+    "ParameterList": []
+  },
+  {
+    "FunctionName": "Operatevariable",
+    "Description": "Changes the value of a variable.",
+    "Category": "Variable",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "name",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The name of the variable.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "value",
+        "IsEditable": true,
+        "Allowblank": true,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The value that should be set into the variable. If the value is prefixed with an operator, the variable will be changed according to the operator and value. e.g: +1 will increase the value of the variable with 1. The available operators is: =, +, -, *, /",
+        "IsControlEllipse": true,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "datatype",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": true,
+        "IsReadOnly": true,
+        "ValueList": [
+          "Text",
+          "Integer",
+          "Money",
+          "Datetime",
+          "Float"
+        ],
+        "Description": "The datatype the value will be stored as",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      }
+    ]
+  },
+  {
+    "FunctionName": "OrIf",
+    "Description": "Does a comparison and lets processing fall through to next function if the comparison is true. If the comparison is false, processing will look for endif, else or elseif.",
+    "Category": "Flow control",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "lvalue",
+        "IsEditable": true,
+        "Allowblank": true,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [
+          "@currentvalue"
+        ],
+        "Description": "The value on the left side of the comparison Legal values: @currentvalue indicates that the value returned from the previous function. @othervalue indicates that the value should be retrieved from the variable 'othervalue'. Values not starting with @ will be used as is.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "rvalue",
+        "IsEditable": true,
+        "Allowblank": true,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [
+          "@currentvalue"
+        ],
+        "Description": "The value on the right side of the comparison. Legal values: @currentvalue indicates that the value returned from the previous function. @othervalue indicates that the value should be retrieved from the variable 'othervalue'. Values not starting with @ will be used as is.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "operator",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "ValueList": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<="
+        ],
+        "Description": "The comparison operator.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "datatype",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": true,
+        "IsReadOnly": true,
+        "ValueList": [
+          "text",
+          "integer",
+          "money",
+          "float",
+          "datetime"
+        ],
+        "Description": "which datatype the values should be when they are compared.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      }
+    ]
+  },
+  {
+    "FunctionName": "Padding",
+    "Description": "Add padding to the left or right of a string to make it a specific length",
+    "Category": "Data manipulation",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "length",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The length that the result string should be",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "side",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "ValueList": [
+          "Left",
+          "Right"
+        ],
+        "Description": "The side that will be padded. Left is default",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "symbol",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": true,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The symbol that will be filled, default is space",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "variable",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": true,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The variable that should be padded. Default is @currentvalue",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      }
+    ]
+  },
+  {
+    "FunctionName": "ProperCase",
+    "Description": "Convert the string variable into proper case. This means that the first letter in each word will be in upper case and the rest in lower case.",
+    "Category": "Data manipulation",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "variable",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": true,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The string variable.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      }
+    ]
+  },
+  {
+    "FunctionName": "Region",
+    "Description": "Start region the section",
+    "Category": "Flow control",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "description",
+        "IsEditable": true,
+        "Allowblank": true,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "Description of the region section",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      }
+    ]
+  },
+  {
+    "FunctionName": "RemoveDuplicateRow",
+    "Description": "On mapping to a target, RemoveDuplicaterow will remove the duplicate row in a table.",
+    "Category": "Source mapping",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "exd",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "Source": "EXD_name",
+        "ValueList": [],
+        "Description": "Name of EXD",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "table",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "Source": "EXD_table",
+        "ValueList": [],
+        "Description": "Name of table",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "field1",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "Source": "EXD_field",
+        "ValueList": [],
+        "Description": "The name of the first key field.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "field2",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": true,
+        "IsReadOnly": true,
+        "Source": "EXD_field",
+        "ValueList": [],
+        "Description": "The name of the second key field.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "field3",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": true,
+        "IsReadOnly": true,
+        "Source": "EXD_field",
+        "ValueList": [],
+        "Description": "The name of the third key field.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "field4",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": true,
+        "IsReadOnly": true,
+        "Source": "EXD_field",
+        "ValueList": [],
+        "Description": "The name of the fourth key field.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "field5",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": true,
+        "IsReadOnly": true,
+        "Source": "EXD_field",
+        "ValueList": [],
+        "Description": "The name of the fifth key field.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "sumField1",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": true,
+        "IsReadOnly": true,
+        "Source": "EXD_field",
+        "ValueList": [],
+        "Description": "The name of the first field that needs to be summed.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "sumField2",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": true,
+        "IsReadOnly": true,
+        "Source": "EXD_field",
+        "ValueList": [],
+        "Description": "The name of the second field that needs to be summed.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "sumField3",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": true,
+        "IsReadOnly": true,
+        "Source": "EXD_field",
+        "ValueList": [],
+        "Description": "The name of the third field that needs to be summed.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "sumField4",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": true,
+        "IsReadOnly": true,
+        "Source": "EXD_field",
+        "ValueList": [],
+        "Description": "The name of the fourth field that needs to be summed.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "sumField5",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": true,
+        "IsReadOnly": true,
+        "Source": "EXD_field",
+        "ValueList": [],
+        "Description": "The name of the fifth field that needs to be summed.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      }
+    ]
+  },
+  {
+    "FunctionName": "RemoveEmptyRow",
+    "Description": "On mapping to a target, RemoveEmptyrow will remove the current row if the key fields are empty.",
+    "Category": "Source mapping",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "exd",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "Source": "EXD_name",
+        "ValueList": [],
+        "Description": "Name of EXD",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "table",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "Source": "EXD_table",
+        "ValueList": [],
+        "Description": "Name of table",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "field1",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "Source": "EXD_field",
+        "ValueList": [],
+        "Description": "The name of the first key field.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "field2",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": true,
+        "IsReadOnly": true,
+        "Source": "EXD_field",
+        "ValueList": [],
+        "Description": "The name of the second key field.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "field3",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": true,
+        "IsReadOnly": true,
+        "Source": "EXD_field",
+        "ValueList": [],
+        "Description": "The name of the third key field.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "field4",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": true,
+        "IsReadOnly": true,
+        "Source": "EXD_field",
+        "ValueList": [],
+        "Description": "The name of the fourth key field.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "field5",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": true,
+        "IsReadOnly": true,
+        "Source": "EXD_field",
+        "ValueList": [],
+        "Description": "The name of the fifth key field.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      }
+    ]
+  },
+  {
+    "FunctionName": "ResetTable",
+    "Description": "Reset the counter for a given table and all the child. Used if you want to loop the same dataset more than ones.",
+    "Category": "Exchange",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "exd",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "Source": "EXD_name",
+        "ValueList": [],
+        "Description": "Name of EXD",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "table",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "Source": "EXD_table",
+        "ValueList": [],
+        "Description": "Name of table",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      }
+    ]
+  },
+  {
+    "FunctionName": "Right",
+    "Description": "Extracts a sub-string out of the end of the current string.",
+    "Category": "Data manipulation",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "length",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "the length of the sub-string.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "value",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": true,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The string value that we want the left part of. Default is @currentvalue",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      }
+    ]
+  },
+  {
+    "FunctionName": "Saveexd",
+    "Description": "Saves an EXD to file in xml format.",
+    "Category": "Debug",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "exd",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "Source": "EXD_name",
+        "ValueList": [],
+        "Description": "Name of EXD",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "filename",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The name of the file to save it into ",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      }
+    ]
+  },
+  {
+    "FunctionName": "SecureSqlBulk",
+    "Description": "Insert data from a table in Exchange file into a database table in SQL.",
+    "Category": "External resources",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "connectionstring",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The connectionstring used for the DBS. This contains usually specific parameter for the different DBMS (DSN=MyDB;SERVER=MyDB;UID=dicentral;PWD=dicentral;).",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "exd",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "Source": "EXD_name",
+        "ValueList": [],
+        "Description": "Name of EXD",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "tables",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "Is the name of the table in SQL DB and Exchange file. Only views in which all columns refer to the same base table can be used.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "batchsize",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "Specifies the number of rows in a batch. Each batch is copied to the server as one transaction. If this fails, SQL Server commits or rolls back the transaction for every batch. By default, all data in the specified data file is one batch.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      }
+    ]
+  },
+  {
+    "FunctionName": "SecureSQLCmd",
+    "Description": "Create a SQL command that includes variables, these variables will be replaced by SecureSQLCmdParameter function.",
+    "Category": "External resources",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "name",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The name of the SQL command that will be used in paramter 'command' of SecureSQLExec function.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "value",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "SQL statement that you need to run. This statement includes variable(s), for example: select columnA from tableA where columnA = '?@variable1?'.",
+        "IsControlEllipse": true,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      }
+    ]
+  },
+  {
+    "FunctionName": "SecureSQLCmdParameter",
+    "Description": "Replace variable in SQL command by its value.",
+    "Category": "External resources",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "name",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "SQL command name that you want to replace variable.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "parameter",
+        "IsEditable": true,
+        "Allowblank": true,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The parameter inside SQL command.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "variable",
+        "IsEditable": true,
+        "Allowblank": true,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The value of this variable will replace parameter inside SQL statement. If 'variable' parameter is not exist then default value is in parameter 'parameter'. ",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      }
+    ]
+  },
+  {
+    "FunctionName": "SecureSQLCommit",
+    "Description": "A COMMIT statement in SQL ends a transaction",
+    "Category": "External resources",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "connectionname",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The name of the connection.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      }
+    ]
+  },
+  {
+    "FunctionName": "SecureSQLConnect",
+    "Description": "Create a new connection to a database. This function has to be run before a SecureSQLExec can be called. Do not put this function in a loop ore repeating circle. If the SecureSQLExec function is been used through the hole document mapping, you may put this function in the beginning of the document structure or in the job managers preprocessing list.",
+    "Category": "External resources",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "connectionname",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "Give this connection you create here a name. This name will be refer to from other functions.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "connectionstring",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The connectionstring used for the DBS. This contains usually specific parameter for the different DBMS (DSN=MyDB;SERVER=MyDB;UID=dicentral;PWD=dicentral;).",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "autocommit",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "ValueList": [
+          "True",
+          "False"
+        ],
+        "Description": "Should the DB connection use autocommit?",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      }
+    ]
+  },
+  {
+    "FunctionName": "SecureSQLDisconnect",
+    "Description": "Disconnect an active connection to a database. This function has to be run after the SQLExec are done for a map Do not put this function in a loop ore repeating circle. If the SQLExec function is been used through the hole document mapping, you may put this function in the end of the document structure or in the job managers postprocessing list.",
+    "Category": "External resources",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "connectionname",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The name of the connection.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "commit",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": true,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "Default is true, if commit = true is call commit, else is call rollback",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      }
+    ]
+  },
+  {
+    "FunctionName": "SecureSQLExec",
+    "Description": "Execute an SQL statement on a database. The function has to refer a connection name created by a successful SecureSQLConnect. Since this function is used on a field, be sure the result of the sql statement return only a single value and not a hole record set. ",
+    "Category": "External resources",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "connectionname",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "Source": "SQL_Connection",
+        "ValueList": [],
+        "Description": "The name of the connection.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "sql",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": true,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The SQL statement you want to run. The returned value will be the new current value for the field. It's allowed to put the sql in a variable, and then set the sql parameter like the \"@variablename\". It is not allowed to refer to a variable within the string as a part of the sql statement.",
+        "IsControlEllipse": true,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "command",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "Source": "SQL_Command",
+        "ValueList": [],
+        "Description": "The SQL statement you want to run. The returned value will be the new current value for the field. It's allowed to put sql command is created by SQLCmd function. If exists then this query statement will override the value in sql parameter",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": true,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "fieldseparator",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": true,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "If the sql statement returns several fields, the field separator will be entered between the fields. If there is no field separator, only the first field will be returned",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "recordseparator",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": true,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "If the sql statement returns several records, the record separator will be entered between the records. If there is no record separator, only the first record will be returned",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      }
+    ]
+  },
+  {
+    "FunctionName": "SecureSqlPrepCmd",
+    "Description": "Secure Sql Prepare command",
+    "Category": "External resources",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "name",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "Command name.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "value",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "Command value.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      }
+    ]
+  },
+  {
+    "FunctionName": "SetDynamicName",
+    "Description": "Builds a dynamic variable value. Often used for creating dynamic file- and directory names.",
+    "Category": "Variable",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "variable",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The variable name where the result will be stored.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "format",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [
+          "myfile_[JJJ]_[YYYY][MM][DD].txt",
+          "[CCC]_[HH]-[NN]-[SS].[JJJ]",
+          "mydir_[CCC]"
+        ],
+        "Description": "The format of the result variable. Capital letters inside brackets will be replaced with: J - Job Number, C - Counter, Y - Year, M - Month, D - Day, H - Hour, N - Minutes, S - Seconds. The length of the resulting number is given by number of characters, for instance will [JJ] give a two-digit job number and [JJJJJ] give a 5 digit one. It is illegal to mix different characters inside brackets.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      }
+    ]
+  },
+  {
+    "FunctionName": "Seterror",
+    "Description": "Sets a syntax error. This function will create an error that will stop processing of current message.",
+    "Category": "Debug",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "message",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "the message that will come in the error log.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "severity",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "ValueList": [
+          "debug",
+          "info",
+          "warning",
+          "error",
+          "fatal"
+        ],
+        "Description": "The severity of the message.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      }
+    ]
+  },
+  {
+    "FunctionName": "Setfilter",
+    "Description": "Sets a filter on an EXD.",
+    "Category": "Exchange",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "exd",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "Source": "EXD_name",
+        "ValueList": [],
+        "Description": "Name of EXD",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "table",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "Source": "EXD_table",
+        "ValueList": [],
+        "Description": "Name of table",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "field",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "Source": "EXD_field",
+        "ValueList": [],
+        "Description": "Name of field",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "value",
+        "IsEditable": true,
+        "Allowblank": true,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The value to be compared with the field value.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "comparetype",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "ValueList": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<="
+        ],
+        "Description": "The comparison operator.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      }
+    ]
+  },
+  {
+    "FunctionName": "Setvalue",
+    "Description": "Sets a value into the EXD",
+    "Category": "Source mapping",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "exd",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "Source": "EXD_name",
+        "ValueList": [],
+        "Description": "Name of EXD",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "table",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "Source": "EXD_table",
+        "ValueList": [],
+        "Description": "Name of table",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "field",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "Source": "EXD_field",
+        "ValueList": [],
+        "Description": "Name of field",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "value",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": true,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The value to be set into the EXD. If the value is not set it will use the returnvalue from the last function.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "template",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": true,
+        "IsReadOnly": true,
+        "ValueList": [
+          "True",
+          "False"
+        ],
+        "Description": "When mapping to a field before the Newrow function, template has to be set. The value that is set will then be put into the template, and added for each Newrow function after. Default is False",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      }
+    ]
+  },
+  {
+    "FunctionName": "Setvariable",
+    "Description": "Sets a variable value.",
+    "Category": "Variable",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "name",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The name of the variable.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "value",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": true,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The value to be set into the variable. If the value is not set, the value from previous functions will be used.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "datatype",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": true,
+        "IsReadOnly": true,
+        "ValueList": [
+          "Text",
+          "Integer",
+          "Money",
+          "Datetime",
+          "Float"
+        ],
+        "Description": "The datatype the value will be stored as",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      }
+    ]
+  },
+  {
+    "FunctionName": "SortTable",
+    "Description": "SortTable will sort the table based on one row.",
+    "Category": "Exchange",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "exd",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "Source": "EXD_name",
+        "ValueList": [],
+        "Description": "Name of EXD",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "table",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "Source": "EXD_table",
+        "ValueList": [],
+        "Description": "Name of table",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "field",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "Source": "EXD_field",
+        "ValueList": [],
+        "Description": "The name of the field to sort by.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "order",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": true,
+        "IsReadOnly": true,
+        "ValueList": [
+          "ascending",
+          "descending"
+        ],
+        "Description": "What order to sort the rows in",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      }
+    ]
+  },
+  {
+    "FunctionName": "SQLCmd",
+    "Description": "Create a SQL command that includes variables, these variables will be replaced by SQLCmdParameter function.",
+    "Category": "External resources",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "name",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The name of the SQL command that will be used in paramter 'command' of SQLExec function.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "value",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "SQL statement that you need to run. This statement includes variable(s), for example: select columnA from tableA where columnA = '?@variable1?'.",
+        "IsControlEllipse": true,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      }
+    ]
+  },
+  {
+    "FunctionName": "SQLCmdParameter",
+    "Description": "Replace variable in SQL command by its value.",
+    "Category": "External resources",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "name",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "SQL command name that you want to replace variable.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "parameter",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The parameter inside SQL command.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "variable",
+        "IsEditable": true,
+        "Allowblank": true,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The value of this variable will replace parameter inside SQL statement. If 'variable' parameter is not exist then default value is in parameter 'parameter'. ",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      }
+    ]
+  },
+  {
+    "FunctionName": "SQLConnect",
+    "Description": "Create a new connection to a database. This function has to be run before a SQLExec can be called. Do not put this function in a loop ore repeating circle. If the SQLExec function is been used through the hole document mapping, you may put this function in the beginning of the document structure or in the job managers preprocessing list.",
+    "Category": "External resources",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "connectionname",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "Give this connection you create here a name. This name will be refer to from other functions.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "connectionstring",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The connectionstring used for the DBS. This contains usually specific parameter for the different DBMS (DSN=MyDB;SERVER=MyDB;UID=dicentral;PWD=dicentral;).",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "userid",
+        "IsEditable": true,
+        "Allowblank": true,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The user ID for the DBS to be connected. N.B! Do not use this parameter if the username is present in the connection string.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "password",
+        "IsEditable": true,
+        "Allowblank": true,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The password for the connecting user. N.B! Do not use this parameter if the password is present in the connection string.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "autocommit",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "ValueList": [
+          "True",
+          "False"
+        ],
+        "Description": "Should the DB connection use autocommit?",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      }
+    ]
+  },
+  {
+    "FunctionName": "SQLDisconnect",
+    "Description": "Disconnect an active connection to a database. This function has to be run after the SQLExec are done for a map Do not put this function in a loop ore repeating circle. If the SQLExec function is been used through the hole document mapping, you may put this function in the end of the document structure or in the job managers postprocessing list.",
+    "Category": "External resources",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "connectionname",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The name of the connection.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      }
+    ]
+  },
+  {
+    "FunctionName": "SQLExec",
+    "Description": "Execute an SQL statement on a database. The function has to refer a connection name created by a successful SQLConnect. Since this function is used on a field, be sure the result of the sql statement return only a single value and not a hole record set. ",
+    "Category": "External resources",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "connectionname",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "Source": "SQL_Connection",
+        "ValueList": [],
+        "Description": "The name of the connection.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "sql",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The SQL statement you want to run. The returned value will be the new current value for the field. It's allowed to put the sql in a variable, and then set the sql parameter like the \"@variablename\". It is not allowed to refer to a variable within the string as a part of the sql statement.",
+        "IsControlEllipse": true,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "command",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "Source": "SQL_Command",
+        "ValueList": [],
+        "Description": "The SQL statement you want to run. The returned value will be the new current value for the field. It's allowed to put sql command is created by SQLCmd function. If exists then this query statement will override the value in sql parameter",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": true,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "fieldseparator",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": true,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "If the sql statement returns several fields, the field separator will be entered between the fields. If there is no field separator, only the first field will be returned",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "recordseparator",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": true,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "If the sql statement returns several records, the record separator will be entered between the records. If there is no record separator, only the first record will be returned",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      }
+    ]
+  },
+  {
+    "FunctionName": "SQLQuery",
+    "Description": "Execute an SQL statement on a database. The function has to refer a connection name created by a successful SQLConnect. Since this function is used on a field, be sure the result of the sql statement return only a single value and not a hole record set.",
+    "Category": "External resources",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "connectionname",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The name of the connection.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "sql",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The SQL statement you want to run. The returned value will be the new current value for the field. It's allowed to put the sql in a variable, and then set the sql parameter like the \"@variablename\". It is not allowed to refer to a variable within the string as a part of the sql statement.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      }
+    ]
+  },
+  {
+    "FunctionName": "SQLTransaction",
+    "Description": "Execute an transaction on a database",
+    "Category": "External resources",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "name",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The name of the connection.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "transactionname",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": true,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The name of the transaction.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "value",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "Commit or Rollback",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      }
+    ]
+  },
+  {
+    "FunctionName": "StringConvert",
+    "Description": "Converts the current string value to another string according to an internal conversion list.",
+    "Category": "Conversion",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "List",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "Name of the conversion list to use",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "Default",
+        "IsEditable": true,
+        "Allowblank": true,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The value that will be used if no other match is found.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "Casesensitive",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "ValueList": [
+          "True",
+          "False"
+        ],
+        "Description": "True if the test should be case sensitive",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      }
+    ]
+  },
+  {
+    "FunctionName": "System",
+    "Description": "Execute an external executable.",
+    "Category": "External resources",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "commandline",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The command line that should be executed",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "wait",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "How many seconds it will wait for a result. Default is 0. If it waits for a result, the return value of the execution will become current value.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      }
+    ]
+  },
+  {
+    "FunctionName": "Trim",
+    "Description": "Trims away space from beginning and end of the current string value.",
+    "Category": "Data manipulation",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "value",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": true,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The string value that we want to trim. Default is @currentvalue",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "side",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": true,
+        "IsReadOnly": true,
+        "ValueList": [
+          "Both",
+          "Left",
+          "Right"
+        ],
+        "Description": "The side of the string that should be trimmed.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      }
+    ]
+  },
+  {
+    "FunctionName": "UpperCase",
+    "Description": "Convert the string variable into uppercase.",
+    "Category": "Data manipulation",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "variable",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": true,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The string variable.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      }
+    ]
+  },
+  {
+    "FunctionName": "Validate",
+    "Description": "Validates current field for business logic.",
+    "Category": "Debug",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "operator",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "ValueList": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<="
+        ],
+        "Description": "The comparison operator.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "rvalue",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "the value to check against",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "datatype",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": true,
+        "IsReadOnly": true,
+        "ValueList": [
+          "undefined",
+          "text",
+          "integer",
+          "money",
+          "float",
+          "datetime"
+        ],
+        "Description": "which datatype the values should be when they are compared.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "severity",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "ValueList": [
+          "info",
+          "warning",
+          "error",
+          "fatal"
+        ],
+        "Description": "The severity of the validation error.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "message",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The message that should be sent when this validation fails.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      }
+    ]
+  },
+  {
+    "FunctionName": "ValidateBetween",
+    "Description": "Validates current field for business logic.",
+    "Category": "Debug",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "fromvalue",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "the lower boundary",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "tovalue",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "the upper boundary",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "datatype",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": true,
+        "IsReadOnly": true,
+        "ValueList": [
+          "undefined",
+          "text",
+          "integer",
+          "money",
+          "float",
+          "datetime"
+        ],
+        "Description": "which datatype the values should be when they are compared.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "severity",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "ValueList": [
+          "info",
+          "warning",
+          "error",
+          "fatal"
+        ],
+        "Description": "The severity of the validation error.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "message",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The message that should be sent when this validation fails.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      }
+    ]
+  },
+  {
+    "FunctionName": "ValidateRegex",
+    "Description": "Validates current field for business logic.",
+    "Category": "Debug",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "regex",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "the regex to check for match.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "severity",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "ValueList": [
+          "info",
+          "warning",
+          "error",
+          "fatal"
+        ],
+        "Description": "The severity of the validation error.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "message",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The message that should be sent when this validation fails.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      }
+    ]
+  },
+  {
+    "FunctionName": "ValidateUPC",
+    "Description": "Validates current field for validating UPC code.",
+    "Category": "Debug",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "value",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The UPC code.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "outputvariable",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The name of the output variable: valid: 1, invalid: 0",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "severity",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "ValueList": [
+          "info",
+          "warning",
+          "error",
+          "fatal"
+        ],
+        "Description": "The severity of the validation error.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "message",
+        "IsEditable": true,
+        "Allowblank": false,
+        "IsDropDown": false,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [],
+        "Description": "The message that should be sent when this validation fails.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      }
+    ]
+  },
+  {
+    "FunctionName": "While",
+    "Description": "Loop a set of function if the comparison is true.",
+    "Category": "Flow control",
+    "ParameterList": [
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "lvalue",
+        "IsEditable": true,
+        "Allowblank": true,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [
+          "@currentvalue"
+        ],
+        "Description": "The value on the left side of the comparison Legal values: @currentvalue indicates that the value returned from the previous function. @othervalue indicates that the value should be retrieved from the variable 'othervalue'. Values not starting with @ will be used as is.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "rvalue",
+        "IsEditable": true,
+        "Allowblank": true,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": false,
+        "ValueList": [
+          "@currentvalue"
+        ],
+        "Description": "The value on the right side of the comparison. Legal values: @currentvalue indicates that the value returned from the previous function. @othervalue indicates that the value should be retrieved from the variable 'othervalue'. Values not starting with @ will be used as is.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "operator",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": false,
+        "IsReadOnly": true,
+        "ValueList": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<="
+        ],
+        "Description": "The comparison operator.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": true
+      },
+      {
+        "Value": "",
+        "IsFunctionGroupEditor": false,
+        "Name": "datatype",
+        "IsEditable": false,
+        "Allowblank": false,
+        "IsDropDown": true,
+        "IsOptional": true,
+        "IsReadOnly": true,
+        "ValueList": [
+          "text",
+          "integer",
+          "money",
+          "float",
+          "datetime"
+        ],
+        "Description": "which datatype the values should be when they are compared.",
+        "IsControlEllipse": false,
+        "IsAutoCompleteBoxExt": false,
+        "IsRequired": false
+      }
+    ]
+  }
+]

@@ -1,0 +1,134 @@
+<div class="di-box_prt min-mdw-200">
+    <div class="di-box_header pad0A">
+        <div class="di-sidebar-title">
+            <h1 class="di__h1">Build</h1>
+        </div>
+        <div class="di-sidebar-sub-title">
+            <div>
+                <div ngbDropdown display="dynamic" class="d-inline-block di__widget-dropdown">
+                    <button ngbTooltip="Search Activies" ngbDropdownToggle type="button"
+                        class="btn btn-circle-micro btn-light mr-1 dropdown-selected">
+                        <i class="material-icons">ic_search</i>
+                    </button>
+                    <div ngbDropdownMenu class="di__widget-dropdown-box">
+                        <div class="di__widget-dropdown-header">
+                            <div class="input-group-search input-group-sm">
+                                <button type="button" class="menu-search-submit">
+                                    <i class="material-icons">ic_search</i>
+                                </button>
+                                <input placeholder="Search..." onfocus="this.placeholder=''"
+                                    onblur="this.placeholder='Search...'" class="form-control menu-search-field"
+                                    type="text" />
+                                <button type="button" class="menu-search-close-btn">
+                                    <i class="material-icons">ic_clear</i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" class="btn btn-xs mr-1" *ngIf="!showLibary"
+                    (click)="showLibary = !showLibary; keyword = ''">
+                    <i class="fa fa-book fa-fw"></i> Browser Library
+                </button>
+                <button type="button" class="btn btn-xs mr-1" *ngIf="showLibary"
+                    (click)="showLibary = !showLibary; keyword = ''">
+                    <i class="fa fa-angle-left fa-fw"></i> Back
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="di-box_content pad0A">
+        <!-- Components -->
+        <ul *ngIf="!showLibary" class="di__nav-list-tree noBrd-tree">
+            <li class="dropdown-treemenu having-nav-header">
+                <a class="dropdown-toggle dropdown-arrow" data-toggle="dropdown">
+                    <label class="tree-toggler nav-header" [class.close-tree]="!isUAExpanded"
+                        (click)="isUAExpanded = !isUAExpanded">Universal Adapter</label>
+                    <!--Recipes-->
+                    <ul class="nav di__nav-list-tree tree" [style.display]="isUAExpanded ? 'flex' : 'none'">
+                        <li class="dropdown-treemenu">
+                            <a href="#" class="dropdown-toggle dropdown-arrow" data-toggle="dropdown"></a>
+                            <label class="tree-toggler nav-header" [class.close-tree]="!isRecipesExpanded"
+                                (click)="isRecipesExpanded = !isRecipesExpanded">
+                                Recipes</label>
+                        </li>
+                        <!--End Recipes-->
+                        <!--Maps-->
+                        <li class="dropdown-treemenu">
+                            <label class="tree-toggler nav-header" [class.close-tree]="!isMapsExpanded"
+                                (click)="isMapsExpanded = !isMapsExpanded">
+                                Maps</label>
+                            <ul class="nav di__nav-list-tree tree" [style.display]="isMapsExpanded ? 'flex' : 'none'">
+                                <li>
+                                    <a class="tree-toggler nav-file">Map 1</a>
+                                    <div ngbDropdown class="d-inline-block float-right" placement="bottom-right">
+                                        <a class="dropdown-toggle dropdown-arrow" ngbDropdownToggle><span
+                                                class="material-icons">ic_more_vert</span></a>
+                                        <div ngbDropdownMenu>
+                                            <button ngbDropdownItem>
+                                                Open Map
+                                            </button>
+                                            <div class="dropdown-divider"></div>
+                                            <button ngbDropdownItem>
+                                                Delete Map
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                </li>
+                            </ul>
+                        </li>
+                        <!--End Maps-->
+                        <!--Profiles-->
+                        <li class="dropdown-treemenu">
+                            <label class="tree-toggler nav-header" [class.close-tree]="!isProfilesExpanded"
+                                (click)="isProfilesExpanded = !isProfilesExpanded">
+                                Profiles</label>
+                            <ul class="nav di__nav-list-tree tree"
+                                [style.display]="isProfilesExpanded ? 'flex' : 'none'">
+                                <li class="dropdown-treemenu">
+                                    <label class="tree-toggler nav-header" [class.close-tree]="!isXmlProfilesExpanded"
+                                        (click)="isXmlProfilesExpanded = !isXmlProfilesExpanded">
+                                        XML</label>
+                                    <!-- XML File -->
+                                    <ul class="nav di__nav-list-tree tree"
+                                        [style.display]="isProfilesExpanded ? 'flex' : 'none'">
+                                        <li class="dropdown-treemenu"><a class="tree-toggler nav-file">XML 1</a></li>
+                                    </ul>
+                                    <!-- End XML File -->
+                                </li>
+                            </ul>
+                        </li>
+                        <!--End Profiles-->
+                    </ul>
+                </a>
+            </li>
+        </ul>
+        <!-- Components -->
+        <!-- Library Components -->
+        <ul *ngIf="showLibary" class="di__nav-list-tree noBrd-tree">
+            <li class="dropdown-treemenu having-nav-header">
+                <a class="dropdown-toggle dropdown-arrow" data-toggle="dropdown">
+                    <label class="tree-toggler nav-header" [class.close-tree]="!isUALibaryExpanded"
+                        (click)="isUALibaryExpanded = !isUALibaryExpanded">Universal Adapter</label>
+                    <!--Recipes-->
+                    <ul class="nav di__nav-list-tree tree" [style.display]="isUALibaryExpanded ? 'flex' : 'none'">
+                        <li class="dropdown-treemenu">
+                            <a href="#" class="dropdown-toggle dropdown-arrow" data-toggle="dropdown"></a>
+                            <label class="tree-toggler nav-header" [class.close-tree]="!isRecipesLibaryExpanded"
+                                (click)="isRecipesLibaryExpanded = !isRecipesLibaryExpanded">
+                                Recipes</label>
+                        </li>
+                        <!--End Recipes-->
+                    </ul>
+                </a>
+            </li>
+        </ul>
+        <!-- Library Components -->
+        <ng-template #noItems>No Items!</ng-template>
+        <ng-template #loading>loading animation...</ng-template>
+    </div>
+</div>

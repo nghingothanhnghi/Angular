@@ -1,0 +1,141 @@
+<h6><i class="fa fa-file-text-o fa-fw"></i> <small><b>Profile</b></small></h6>
+<div class="have-view-script-outside"
+     *ngIf="realProfile && realProfile.profileNodes && realProfile.profileNodes.length > 0">
+  <div class="have-view-script-xs">
+    <!-- Define the recursive template. -->
+    <ng-template #nodeTemplateRef
+                 let-node="node">
+      <ul class="node-list">
+        <li [ngClass]="{ 'expandable': node.isExpandable(), 'expanded': node.expanded }">
+          <div class="toggler"
+               *ngIf="node.isExpandable()"
+               (click)="node.toggle()"></div>
+          <div class="node"
+               [ngClass]="{ 'node-selected': node === selectedProfileNode, 'node-error': node.hasError }"
+               (click)="selectNode(node)">{{ node.label }}</div>
+          <div *ngIf="node.isExpandable() && node.expanded">
+            <ng-template ngFor
+                         let-child
+                         [ngForOf]="node.children">
+              <!-- Invoke the recursive template. -->
+              <ng-template [ngTemplateOutlet]="nodeTemplateRef"
+                           [ngTemplateOutletContext]="{ node: child }">
+              </ng-template>
+            </ng-template>
+          </div>
+        </li>
+      </ul>
+    </ng-template>
+    <!-- Initiate the recursive template rendering. -->
+    <ng-template [ngTemplateOutlet]="nodeTemplateRef"
+                 [ngTemplateOutletContext]="{ node: realProfile.profileNodes[0] }">
+    </ng-template>
+  </div>
+</div>
+<div *ngIf="rule">
+  <div [class.d-none]="!rule.fieldLengthValidation"
+       class="mb-2">
+    <small class="text-note text-muted-lighter"> <i class="fa fa-question-circle-o fa-fw font-blue"></i> This element
+      has a required minimun length</small>
+  </div>
+  <div [class.d-none]="!rule.fieldLengthValidation">
+    <div>
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label col-form-label-sm">If too short</label>
+        <div class="col-md-9">
+          <select name="ifTooShortAct"
+                  class="custom-select custom-select-sm"
+                  [(ngModel)]="rule.minLengOps.ifTooShortAct"
+                  #ifTooShortAct="ngModel"
+                  (blur)="rule.validator.validate('padCharacter')"
+                  (change)="rule.validator.validate('padCharacter')">
+            <option value="reje">No repair - reject document</option>
+            <option value="prep">Prepend character to pad length</option>
+            <option value="appe">Append character to pad length</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row"
+           [class.d-none]="rule.minLengOps.ifTooShortAct=='reje'">
+        <label class="col-md-3 col-form-label col-form-label-sm">Pad character</label>
+        <div class="col-md-9">
+          <input name="padCharacter"
+                 type="text"
+                 class="form-control form-control-sm"
+                 [(ngModel)]="rule.minLengOps.padCharacter"
+                 required
+                 #padCharacter="ngModel"
+                 (blur)="rule.validator.validate('padCharacter')"
+                 (change)="rule.validator.validate('padCharacter')"
+                 [class.is-invalid]="rule.validator.errors.padCharacter && padCharacter.touched" />
+          <small class="text-danger"
+                 [class.d-none]="!rule.validator.errors.padCharacter || padCharacter.untouched">{{rule.validator.errors?.padCharacter}}</small>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div [class.d-none]="!rule.fieldLengthValidation"
+       class="mb-2">
+    <small class="text-note text-muted-lighter"> <i class="fa fa-question-circle-o fa-fw font-blue"></i> This element
+      has a required maximum length</small>
+  </div>
+  <div [class.d-none]="!rule.fieldLengthValidation">
+    <div>
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label col-form-label-sm">If too long</label>
+        <div class="col-md-9">
+          <select name="ifTooLongAct"
+                  class="custom-select custom-select-sm"
+                  [(ngModel)]="rule.maxLengOps.ifTooLongAct">
+            <option value="reje">No repair - reject document</option>
+            <option value="trimL">Trim leading characters</option>
+            <option value="trimT">Trim trailing characters</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div [class.d-none]="rule.dataType === 'c'"
+       class="mb-2">
+    <small class="text-note text-muted-lighter">
+      <i class="fa fa-question-circle-o fa-fw font-blue"></i> This element, if filled, must contain
+      {{rule.dataType == 'n' ? 'numeric':'date'}} data
+    </small>
+  </div>
+  <div [class.d-none]="rule.dataType == 'c'">
+    <div>
+      <div class="form-group row">
+        <label
+               class="col-md-3 col-form-label col-form-label-sm">{{rule.dataType == 'n' ? 'If non-numeric':'If not a date'}}</label>
+        <div class="col-md-9">
+          <select name="ifNonNumericAct"
+                  #ifNonNumericAct="ngModel"
+                  class=" custom-select custom-select-sm"
+                  [(ngModel)]="rule.numericDataOps.ifNonNumericAct"
+                  (blur)="rule.validator.validate('defaultToValue')"
+                  (change)="rule.validator.validate('defaultToValue')">
+            <option value="reje">No repair - reject document</option>
+            <option value="setdv">Set a default value</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row"
+           [class.d-none]="rule.numericDataOps.ifNonNumericAct=='reje'">
+        <label class="col-md-3 col-form-label col-form-label-sm">Default value</label>
+        <div class="col-md-9">
+          <input name="defaultToValue"
+                 type="text"
+                 class="form-control form-control-sm"
+                 [(ngModel)]="rule.numericDataOps.defaultToValue"
+                 required
+                 #defaultToValue="ngModel"
+                 (blur)="rule.validator.validate('defaultToValue')"
+                 (change)="rule.validator.validate('defaultToValue')"
+                 [class.is-invalid]="rule.validator.errors.defaultToValue && defaultToValue.touched">
+          <small class="text-danger"
+                 [class.d-none]="!rule.validator.errors.defaultToValue || defaultToValue.untouched">{{rule.validator.errors?.defaultToValue}}</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

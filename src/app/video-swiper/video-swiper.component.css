@@ -1,0 +1,10 @@
+@import '~swiper/css/swiper';
+.video-card .card{ border-radius: 0 !important; border-color:#BCC8D3 ;}
+.video-card .card-body{height: 250px;background-color: #BCC8D3;}
+.video-card .card-button, .video-card .card-text-event{ position: absolute;}
+.video-card .card-text-event{ width: 100%; bottom: 0; left:0; background-color: rgba(0,48,47, 0.9); padding:10px 15px; color: #fff;}
+.video-card .card-button{ top:50%; left: 50%; margin-top: -60px; margin-left: -30px; width: 60px; height: 60px; }
+.video-card .card-title{ margin-bottom: 0;}
+.btn-play{ width: 60px; height: 60px; border: 1px solid #fff;display: flex;justify-content: center;align-items: center;}
+.btn-play .material-icons{ direction:rtl !important; width: 25px; height: 25px;}
+

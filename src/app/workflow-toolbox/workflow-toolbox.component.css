@@ -1,0 +1,12 @@
+.di-pills-tabs{ margin-bottom: 7px;}
+.di-pills-tabs > li{  position: relative; background:none;}
+.di-pills-tabs > li a{ font-size: 12px; display:block;margin-bottom:0;padding:0px 10px;cursor: pointer; opacity:0.5; border-radius: 40px; max-width: 84px;}
+.di-pills-tabs > li.active a{ opacity:1; color:#003057; border:1px solid #BCC8D3; background-color: #fff;}
+.di-pills-tabs > li:hover a{ opacity:1}
+.di-list-group-toolbox .di-list-group-toolbox-item{ margin: 10px; border: 0;padding: 7px 10px; box-shadow: 0 0 2px rgba(0,0,0,0.1); cursor: move;}
+.di-list-group-toolbox .window .di-list-group-toolbox-item {display: flex;flex-direction: row; align-items:baseline;text-decoration: none;}
+.di-list-group-toolbox .di-list-group-toolbox-item .media-left{ padding-right: .5rem;}
+.di-list-group-toolbox h4.media-heading{font-size: 11px; color: #003057; margin: 0 !important; }
+.di-list-group-toolbox .di-list-group-toolbox-item:hover{ background: #fff ;}
+.show-tab{display:block!important}
+.hide-tab{display:none!important}

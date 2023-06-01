@@ -1,0 +1,10 @@
+.ua_nav-vert-menu { display: flex; flex-direction: column;}
+.ua_nav-vert-menu > li.nav-item{ text-align: center; position: relative;}
+.ua_nav-vert-menu.navbar-nav > li.nav-item .nav-link{ outline: none;}
+.ua_nav-vert-menu.navbar-nav > li.nav-item .nav-link.active{ background: #fff;}
+.ua_nav-vert-menu.navbar-nav > li.nav-item .nav-link.active:before{ content: ""; position: absolute; left:0; top:0; height: 100%; width: 5px; background: #F88D2B;}
+.ua_nav-vert-menu.navbar-nav > li.nav-item .nav-link.active .ico-title, .ua_nav-vert-menu.navbar-nav > li.nav-item .nav-link.active .icon-menu{ color: #BCC8D3;}
+.ua_nav-vert-menu > li.nav-item .icon-menu{ display: block;}
+.ua_nav-vert-menu > li.nav-item .ico-title,.ua_nav-vert-menu > li.nav-item .icon-menu{ color: #BCC8D3; }
+.ua_nav-vert-menu > li.nav-item .ico-title{ font-size: 11px;overflow: hidden; text-overflow: ellipsis;}
+.ua_nav-vert-menu > li.nav-item .dropdown-toggle::after{ display: none;}

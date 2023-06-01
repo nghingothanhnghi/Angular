@@ -1,0 +1,22 @@
+<div [style.width]="obj.w + 'px'"
+     [style.height]="obj.h +'px'"
+     class="flowchart-object flowchart-start">
+     <div style="position:relative">
+          <div [attr.width]="obj.w"
+               [attr.height]="obj.h">
+               <img [src]="obj.imgUrl"
+                    width="24"
+                    class="outer">
+               <div text-anchor="middle"
+                    [attr.x]="obj.w / 2"
+                    [attr.y]="obj.h / 2"
+                    dominant-baseline="central">{{obj.text}}
+               </div>
+          </div>
+     </div>
+     <div class="wnode-spinner wnode-{{status}}"
+          [class.d-none]="!lockMode"></div>
+     <jtk-source port-type="start"
+                 filter=".outer"
+                 endpoint="true"></jtk-source>
+</div>

@@ -1,0 +1,28 @@
+<!--<div class="modal-header">
+  <h4 class="modal-title pull-left">{{ title }}</h4>
+  <button
+    type="button"
+    class="close pull-right"
+    aria-label="Close"
+    (click)="bsModalRef.hide()"
+  >
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>-->
+<div class="modal-body di__dialog-warning">
+  <div *ngIf="list.length" class="di__dialog-icon">
+    <i [ngClass]="'fa fa-exclamation-triangle'"></i>
+    <h6 *ngFor="let item of list" [ngClass]="'di__dialog-sub-title'">{{ item }}</h6>
+  </div>
+</div>
+<div class="modal-footer di__dialog-footer">
+  <button type="button"
+          class="btn btn-light width-xs-80"
+          (click)="onConfirm()"
+          *ngIf="isConfirmDialog">
+    {{ confirmBtnName }}
+  </button>
+  <button type="button" class="btn btn-link font-black width-xs-80" (click)="onCancel()">
+    {{ closeBtnName }}
+  </button>
+</div>

@@ -1,0 +1,539 @@
+
+/* ---------------------------------------------------------------------------------------------------- */
+/* --- page structure --------------------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------------------------------------- */
+
+
+
+.jtk-bootstrap {
+  min-height:100vh;
+  display:flex;
+  flex-direction: column;  
+}
+
+.jtk-bootstrap .jtk-page-container {
+    display:flex;
+    width:100vw;
+    justify-content: center;
+    flex:1;
+  }
+
+  .jtk-bootstrap .jtk-container {
+    width: 60%;
+    max-width:800px;
+  }
+
+  .jtk-bootstrap-wide .jtk-container {
+      width: 80%;
+      max-width:1187px;
+  }
+
+.jtk-demo-main {    
+    position: relative;
+    margin-top:98px;
+    display:flex;
+    flex-direction:column;
+}
+
+.jtk-demo-inner {
+    display:flex;
+}
+
+.jtk-demo-main .description {
+    font-size: 13px;
+    margin-top: 25px;
+    padding: 13px;
+    margin-bottom: 22px;
+    background-color: #f4f5ef;
+}
+
+.jtk-demo-main .description li {
+    list-style-type: disc !important;
+}
+
+.jtk-demo-canvas {    
+    height:750px;
+    max-height:700px;
+    border:1px solid #CCC;
+    background-color:white;
+    display: flex;
+    flex-grow:1;
+    position:relative;
+}
+
+.canvas-wide {
+    margin-left:0;
+}
+
+.miniview {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    z-index: 100;
+}
+
+
+.jtk-demo-dataset {
+    text-align: left;
+    max-height: 600px;
+    overflow: auto;
+}
+
+.demo-title {
+    float:left;
+    font-size:18px;
+}
+
+.controls {
+    top: 25px;
+    color: #FFF;
+    margin-right: 10px;
+    position: absolute;
+    left: 42px;
+    z-index: 1;
+    display:flex;
+}
+
+.controls i {
+    background-color: #5184a0;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 4px;
+    padding: 4px;
+}
+
+li {
+    list-style-type: none;
+}
+
+/* ------------------------ node palette -------------------- */
+.di-list-group-toolbox-item{ cursor: move;}
+.di-list-group-toolbox-item select {
+    height:35px;
+    width:150px;
+    outline:none;
+}
+
+.di-list-group-toolbox-itemm.katavorio-clone-drag {
+    margin:0;
+    border:1px solid white;
+}
+
+.di-list-group-toolbox-item:hover, .di-list-group-toolbox-item.katavorio-clone-drag {
+
+    color:white;
+}
+
+/*
+.sidebar button {
+    background-color: #30686d;
+    outline: none;
+    border: none;
+    margin-left: 25px;
+    padding: 7px;
+    color: white;
+    cursor:pointer;
+}*/
+
+.sidebar i {
+    float:left;
+}
+
+@media (max-width: 600px) {
+    .sidebar {
+        float:none;
+        height: 55px;
+        width: 100%;
+        padding-top:0;
+        flex-direction: row;
+    }
+
+    .sidebar ul li {
+        display:inline-block;
+        margin-top: 7px;
+        width:67px;
+    }
+    .jtk-demo-canvas {
+        margin-left: 0;
+        margin-top:10px;
+        height:364px;
+    }
+
+    .jtk-demo-inner {
+        flex-direction: column;
+    }
+}
+
+/* ---------------------------------------------------------------------------------------------------- */
+/* --- jsPlumb setup ---------------------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------------------------------------- */
+
+.jtk-surface-pan {
+    display:none;
+}
+
+.jtk-connector {
+    z-index:9;
+}
+
+.jtk-connector:hover, .jtk-connector.jtk-hover {
+    z-index:10;
+}
+
+.jtk-endpoint {
+    z-index:12;
+    opacity:0.8;
+    cursor:pointer;
+}
+
+.jtk-overlay {
+    background-color: white;
+    color: #434343;
+    font-weight: 400;
+    padding: 4px;
+    z-index:10;
+    font-size: 11px;
+    border: 1px dashed #ddd;
+
+}
+
+.jtk-overlay.jtk-hover {
+    color: #434343;
+}
+
+path {
+    cursor:pointer;
+}
+
+.delete {
+    padding: 2px;
+    cursor: pointer;
+    float: left;
+    font-size: 10px;
+    line-height: 20px;
+}
+
+.add, .edit {
+    cursor: pointer;
+    float:right;
+    font-size: 10px;
+    line-height: 20px;
+    margin-right:2px;
+    padding: 2px;
+}
+
+.edit:hover {
+    color: #ff8000;
+}
+
+.selected-mode {
+    color:#E4F013;
+}
+
+.connect {
+    width:10px;
+    height:10px;
+    background-color:#f76258;
+    position:absolute;
+    bottom: 13px;
+    right: 5px;
+}
+
+/* header styles */
+
+.demo-links {
+    position: fixed;
+    right: 0;
+    top: 57px;
+    font-size: 11px;
+    background-color: white;
+    opacity: 0.8;
+    padding-right: 10px;
+    padding-left: 5px;
+    text-transform: uppercase;
+    z-index:100001;
+}
+
+.demo-links div {
+    display:inline;
+    margin-right:7px;
+    margin-left:7px;
+}
+
+.demo-links i {
+    padding:4px;
+}
+
+.jtk-node {
+    background-color: #5184a0;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    position: absolute;
+    z-index: 11;
+    overflow: hidden;
+    min-width:80px;
+    min-height:30px;
+    width: auto;
+}
+
+.jtk-node .name {
+
+    color: white;
+    cursor: move;
+    font-size: 13px;
+    line-height: 24px;
+    padding: 6px;
+    text-align: center;
+}
+
+.jtk-node .name span {
+    cursor:pointer;
+
+}
+
+[undo], [redo] { background-color:darkgray !important; }
+[can-undo='true'] [undo], [can-redo='true'] [redo] { background-color:#04A3E1  !important; color: #fff; }
+.controls i:focus{background-color:#e2e6ea;box-shadow: 0 0 0 0.2rem rgba(216, 217, 219, 0.5);}
+.controls i{ background:#f8f9fa; color:#212529}
+.controls .selected-mode{ color: #04A3E1;}
+.di_hover-btn-grp{min-width: 100px;font-size: 90%;position: absolute;z-index: 999;top: -34px;left: 50%;margin-left: -10px;}
+.flowchart-object.jtk-surface-selected-element .di_hover-btn-grp .node-action{ display: inline-block; margin-left:7px}
+.flowchart-object .di_hover-btn-grp .node-action{ top:0; position: static; color: #333;}
+.flowchart-object .di_hover-btn-grp .node-edit, .flowchart-object .di_hover-btn-grp .node-delete{ margin-left: 0; left:0}
+
+
+
+
+
+
+/* ------------------------ dialogs ----------------------------*/
+
+/* ----------------------- drag/drop interactions -------------- */
+.drop-hover {
+    background-color: #FCCCCC !important;
+}
+
+/* ----------------------- node styles ------------------------- */
+
+.flowchart-object {
+    position: absolute;
+    text-align: center;
+    font-size: 12px;
+    z-index: 10;
+    background: none;
+    box-shadow: none;
+    border: none;
+    border-radius: 0;
+    min-width: 0;
+    min-height: 0;
+    overflow: visible;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.jtk-node svg {
+    position: absolute;
+    stroke: none;
+    fill: #5184a0;
+    left: 0;
+    top: 0;
+}
+
+.flowchart-object text {
+
+    stroke: none;
+    fill: #fff;
+    font-family: "Open Sans",sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+
+}
+
+.flowchart-object .node-action {
+    display: none;
+    position: absolute;
+    top: 24px;
+    cursor: pointer;
+    color: white;
+    z-index: 10000;
+}
+
+.flowchart-object .drag-start {
+    cursor: pointer;
+}
+
+.flowchart-object .node-action:hover {
+    color: #ff8000;
+}
+
+.flowchart-object .node-edit {
+    left: 50%;
+    margin-left: -20px;
+}
+
+.flowchart-object .node-delete {
+    left: 50%;
+    margin-left: 10px;
+}
+
+.flowchart-object.jtk-surface-selected-element .node-action {
+    display: block;
+}
+
+.outer {
+    fill:gray;
+}
+
+.flowchart-object:hover .outer {
+    opacity:0.7;
+}
+
+.inner {
+    cursor:move !important;
+}
+
+.connection-drop svg {
+    fill:#CCC;
+}
+
+.connection-drop text {
+    fill:black;
+}
+
+/* styles for drag + drop */
+
+.jtk-surface.jtk-drag-drop-active {
+    outline:6px dotted #4ea758 !important;
+}
+
+.jtk-surface.jtk-drag-drop-hover {
+    outline: 6px solid #f7a45d !important;
+}
+
+svg.jtk-drag-drop-hover, svg.jtk-drag-drop-active {
+    outline:none !important;
+}
+
+svg.jtk-drag-drop-active path {
+    stroke:#4ea758;
+    stroke-width:3px;
+    stroke-dasharray:2 0 2 5;
+}
+
+svg.jtk-drag-drop-hover path {
+    stroke:#f7a45d;
+    stroke-width:4px;
+    stroke-dasharray:0;
+}
+
+.jtk-surface {
+    height:500px;
+}
+
+jsplumb-demo {
+    width:100%;
+    height:100%;
+    display:flex;
+    flex-direction: column;
+  position:relative;
+}
+
+jsplumb-flowchart {
+  width:100%;
+  display:flex;
+}
+
+jsplumb-surface{
+    flex:1;
+  height:750px;
+  border-right: 1px solid #CCC;
+  border-bottom: 1px solid #CCC;
+}
+
+jsplumb-surface > div {
+    width:100% !important;
+    height:100% !important;
+}
+
+jsplumb-controls {
+  right: 41px;
+  position: absolute;
+  color: white;
+  top: -3px;
+  z-index: 1;
+  width: 150px;
+}
+
+jsplumb-miniview {
+  position: absolute;
+  top: 80px;
+  right: 10px;
+}
+
+/*.controls {
+  position:static;
+}*/
+
+nav {
+  background-color: #e0e0e0;
+  display:flex;
+}
+
+nav a, nav a:visited {
+  padding: 12px;
+  color: #000;
+  margin: 8px 10px 8px;
+  text-decoration: none;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+nav a.active {
+  background-color:white;
+}
+
+.jtk-miniview {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    z-index: 100;
+}
+
+.sidebar {
+  border-top:none;
+}
+
+/* styles for drag + drop */
+
+.jtk-surface.jtk-drag-drop-active {
+  outline:6px dotted #4ea758 !important;
+}
+
+.jtk-surface.jtk-drag-drop-hover {
+  outline: 6px solid #f7a45d !important;
+}
+
+svg.jtk-drag-drop-hover, svg.jtk-drag-drop-active {
+  outline:none !important;
+}
+
+svg.jtk-drag-drop-active path {
+  stroke:#4ea758;
+  stroke-width:3px;
+  stroke-dasharray:2 0 2 5;
+}
+
+svg.jtk-drag-drop-hover path {
+  stroke:#f7a45d;
+  stroke-width:4px;
+  stroke-dasharray:0;
+}
+
+.jtk-miniview-collapse{
+    top: -4px;
+    right: 3px;
+  }
